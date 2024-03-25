@@ -81,7 +81,7 @@ let resumeData = {
         "id": 1,
         "name":"E-commerce website",
         "description":"Event Website",
-        "imgurl":"images/portfolio/eventnest.png"
+        "imgurl":"/images/portfolio/eventnest.png"
       },
       {
         "id": 2,
