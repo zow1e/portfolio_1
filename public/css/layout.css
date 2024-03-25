@@ -33,7 +33,7 @@ header {
    height: 800px;
    min-height: 500px;
    width: 100%;
-   background: #161415 url(../images/header-background.jpg) no-repeat top center;
+   background: #161415 url(../images/header-background.png) no-repeat top center;
    background-size: cover !important;
 	-webkit-background-size: cover !important;
    text-align: center;
@@ -130,7 +130,7 @@ header .scrolldown a:hover { color: #11ABB0; }
 
 /* nav-wrap */
 #nav-wrap {
-   font: 12px 'opensans-bold', sans-serif;
+   font: 15px 'opensans-bold', sans-serif;
    width: 100%;
    text-transform: uppercase;
    letter-spacing: 2.5px;
@@ -139,6 +139,7 @@ header .scrolldown a:hover { color: #11ABB0; }
    position: fixed;
    left: 0;
    top: 0;
+   background: rgb(10, 103, 106, 0.5);
 }
 .opaque { background-color: #333; }
 
@@ -155,8 +156,9 @@ ul#nav {
 ul#nav li {
    position: relative;
    list-style: none;
-   height: 48px;
+   height: 65px;
    display: inline-block;
+   font: 50px;
 }
 
 /* Links */
@@ -165,7 +167,7 @@ ul#nav li a {
 /* 8px padding top + 8px padding bottom + 32px line-height = 48px */
 
    display: inline-block;
-   padding: 8px 13px;
+   padding: 12px 13px;
    line-height: 32px;
 	text-decoration: none;
    text-align: left;
@@ -179,7 +181,7 @@ ul#nav li a {
 }
 
 ul#nav li a:active { background-color: transparent !important; }
-ul#nav li.current a { color: #11ABB0; }
+ul#nav li.current a { color: #0a676a; }
 
 
 /* ------------------------------------------------------------------ */
@@ -187,7 +189,7 @@ ul#nav li.current a { color: #11ABB0; }
 /* ------------------------------------------------------------------ */
 
 #about {
-   background: #2B2B2B;
+   background: #3d5872;
    padding-top: 96px;
    padding-bottom: 66px;
    overflow: hidden;
@@ -203,7 +205,7 @@ ul#nav li.current a { color: #11ABB0; }
 }
 #about p {
    line-height: 30px;
-   color: #7A7A7A;
+   color: #b7ada1;
 }
 #about .profile-pic {
    position: relative;
@@ -216,7 +218,7 @@ ul#nav li.current a { color: #11ABB0; }
    width: 58.33333%;
    padding-top: 6px;
 }
-#about .main-col { padding-right: 5%; }
+/* #about .main-col { padding-right: 5%; } */
 #about .download .button {
    margin-top: 6px;
    background: #444;
@@ -788,10 +790,10 @@ call-to-action .button {
 /* ------------------------------------------------------------------ */
 
 #contact {
-   background: #191919;
+   background: #3d5872;
    padding-top: 96px;
    padding-bottom: 102px;
-   color: #636363;
+   color: #b7ada1;
 }
 #contact .section-head { margin-bottom: 42px; }
 
