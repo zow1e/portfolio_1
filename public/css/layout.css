@@ -139,7 +139,9 @@ header .scrolldown a:hover { color: #11ABB0; }
    position: fixed;
    left: 0;
    top: 0;
-   background: rgba(118, 183, 209, 0.5);
+   background: rgba(188, 221, 242, 0.5);
+
+   /* background: rgba(118, 183, 209, 0.5); */
 }
 .opaque { background-color: #333; }
 
@@ -189,7 +191,7 @@ ul#nav li.current a { color: #161e3c; }
 /* ------------------------------------------------------------------ */
 
 #about {
-   background: #72bbee;
+   background: #bcddf2;
    padding-top: 96px;
    padding-bottom: 66px;
    overflow: hidden;
@@ -417,7 +419,7 @@ ul#nav li.current a { color: #161e3c; }
 /* ------------------------------------------------------------------ */
 
 #portfolio {
-   background: #72bbee;
+   background: #bcddf2;
    padding-top: 90px;
    padding-bottom: 60px;
 }
