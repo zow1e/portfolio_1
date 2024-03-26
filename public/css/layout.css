@@ -95,7 +95,7 @@ header .social li {
    padding: 0;
 }
 header .social li a { color: #fff; }
-header .social li a:hover { color: #11ABB0; }
+header .social li a:hover { color: #4ebfec; }
 
 /* scrolldown link */
 header .scrolldown a {
@@ -139,7 +139,7 @@ header .scrolldown a:hover { color: #11ABB0; }
    position: fixed;
    left: 0;
    top: 0;
-   background: rgb(10, 103, 106, 0.5);
+   background: rgba(118, 183, 209, 0.5);
 }
 .opaque { background-color: #333; }
 
@@ -181,7 +181,7 @@ ul#nav li a {
 }
 
 ul#nav li a:active { background-color: transparent !important; }
-ul#nav li.current a { color: #0a676a; }
+ul#nav li.current a { color: #161e3c; }
 
 
 /* ------------------------------------------------------------------ */
@@ -189,7 +189,7 @@ ul#nav li.current a { color: #0a676a; }
 /* ------------------------------------------------------------------ */
 
 #about {
-   background: #3d5872;
+   background: #87cde9;
    padding-top: 96px;
    padding-bottom: 66px;
    overflow: hidden;
@@ -200,12 +200,12 @@ ul#nav li.current a { color: #0a676a; }
 
 #about h2 {
    font: 22px/30px 'opensans-bold', sans-serif;
-   color: #fff;
+   color: #161e3c;
    margin-bottom: 12px;
 }
 #about p {
    line-height: 30px;
-   color: #b7ada1;
+   color: #0a3f1d;
 }
 #about .profile-pic {
    position: relative;
@@ -238,7 +238,7 @@ ul#nav li.current a { color: #0a676a; }
 /* ------------------------------------------------------------------ */
 
 #resume {
-   background: #fff;
+   background: #161e3c;
    padding-top: 90px;
    padding-bottom: 72px;
    overflow: hidden;
@@ -251,6 +251,7 @@ ul#nav li.current a { color: #0a676a; }
    font: 18px/24px 'opensans-bold', sans-serif;
    text-transform: uppercase;
    letter-spacing: 1px;
+   color: #fff;
 }
 #resume h1 span {
    border-bottom: 3px solid #11ABB0;
@@ -258,6 +259,7 @@ ul#nav li.current a { color: #0a676a; }
 }
 #resume h3 {
    font: 25px/30px 'opensans-bold', sans-serif;
+   color: #fff;
 }
 
 #resume .header-col { padding-top: 9px; }
@@ -270,17 +272,19 @@ ul#nav li.current a { color: #0a676a; }
 }
 #resume .info {
    font: 16px/24px 'librebaskerville-italic', serif;
-   color: #6E7881;
+   color: #96b0c6;
    margin-bottom: 18px;
    margin-top: 9px;
 }
 #resume .info span {
    margin-right: 5px;
    margin-left: 5px;
+   color: #96b0c6;
 }
 #resume .date {
    font: 15px/24px 'opensans-regular', sans-serif;
    margin-top: 6px;
+   color: #96b0c6;
 }
 
 /*----------------------------------------------*/
@@ -413,7 +417,7 @@ ul#nav li.current a { color: #0a676a; }
 /* ------------------------------------------------------------------ */
 
 #portfolio {
-   background: #ebeeee;
+   background: #87cde9;
    padding-top: 90px;
    padding-bottom: 60px;
 }
@@ -423,7 +427,7 @@ ul#nav li.current a { color: #0a676a; }
    letter-spacing: 1px;
    text-align: center;
    margin-bottom: 48px;
-   color: #95A3A3;
+   color: #03102c;
 }
 
 /* Portfolio Content */
@@ -790,10 +794,10 @@ call-to-action .button {
 /* ------------------------------------------------------------------ */
 
 #contact {
-   background: #3d5872;
+   background: #161e3c;
    padding-top: 96px;
    padding-bottom: 102px;
-   color: #b7ada1;
+   color: #fff;
 }
 #contact .section-head { margin-bottom: 42px; }
 
@@ -929,7 +933,7 @@ call-to-action .button {
 footer {
    padding-top: 48px;
    margin-bottom: 48px;
-   color: #303030;
+   color: #161e3c;
    font-size: 14px;
    text-align: center;
    position: relative;
