@@ -126,6 +126,20 @@ let resumeData = {
         "imgurl":"images/portfolio/phone.jpg"
       }
     ],
+    "MLprojects":[
+      {
+        "id": 1,
+        "name":"E-commerce website",
+        "description":"Event Website",
+        "imgurl":"/images/portfolio/eventnest.png"
+      },      
+      {
+        "id": 2,
+        "name":"E-commerce website",
+        "description":"Event Website",
+        "imgurl":"/images/portfolio/eventnest.png"
+      },
+    ],
     "testimonials":[
       {
         "description":"This is a sample testimonial",

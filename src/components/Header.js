@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Navbar from './Navbar.js';
+
 export default class Header extends Component {
   render() {
     let resumeData = this.props.resumeData;
@@ -6,7 +8,7 @@ export default class Header extends Component {
       <React.Fragment>
       
       <header id="home">
-         <nav id="nav-wrap">
+         {/* <nav id="nav-wrap">
             <a className="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
           <a className="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
             <ul id="nav" className="nav">
@@ -17,7 +19,9 @@ export default class Header extends Component {
                <li><a className="smoothscroll" href="#testimonials">Testimonials</a></li>
                <li><a className="smoothscroll" href="#contact">Contact</a></li>
             </ul>
-         </nav>
+         </nav> */}
+
+        <Navbar />
 
          <div className="row banner">
             <div className="banner-text">

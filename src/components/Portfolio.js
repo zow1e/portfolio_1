@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from "react-router-dom";
 export default class Porfolio extends Component {
   render() {
     let resumeData = this.props.resumeData;
@@ -16,8 +17,8 @@ export default class Porfolio extends Component {
 
                     <div className="columns portfolio-item">
                       <div className="item-wrap">
+                      <Link to="/zowie-portfolio/moreprojects">
                         <a href="#modal-01">
-                
                           <img src={process.env.PUBLIC_URL + item.imgurl} alt="project pictures" className="item-img"/>
                           <div className="overlay">
                             <div className="portfolio-item-meta">
@@ -25,7 +26,9 @@ export default class Porfolio extends Component {
                               <p>{item.description}</p>
                             </div>
                           </div>
+
                         </a>
+                        </Link>
                       </div>
                     </div>
               //   </div>
