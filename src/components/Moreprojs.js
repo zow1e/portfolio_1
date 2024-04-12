@@ -8,8 +8,9 @@ import resumeData from '../resumeData';
 export default class Moreprojs extends Component {
   render() {
     let Data = resumeData;
+    let projs = Data.MLprojects.reverse()
     return (
-      <section id="portfolio">
+      <section id="moreprojs">
         <Navbar />
 
 
@@ -19,7 +20,7 @@ export default class Moreprojs extends Component {
           <h2>from newest to oldest</h2>
           <div id="portfolio-wrapper" className="bgrid-quarters s-bgrid-thirds cf">
           {
-            Data.MLprojects && Data.MLprojects.reverse().map(item =>{
+            projs && projs.map(item =>{
               return(
                     <div className="columns portfolio-item">
                       <div className="item-wrap">
