@@ -48,7 +48,7 @@ export default  class Resume extends Component {
             {/* <pre><h5>{resumeData.skillsDescription}</h5></pre> */}
             <div class="skill-category">
             <h5>Programming Languages:</h5>
-            <h6>Python, HTML, CSS, Javascript, SQL </h6></div>
+            <h6>Python, SQL, HTML, CSS, Javascript; D3.js, React.js </h6></div>
 
             <div class="skill-category"><h5>Machine Learning Libraries:</h5>
             <h6>Scikit-learn, Pandas, TensorFlow, Keras</h6></div>

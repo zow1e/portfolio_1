@@ -1,6 +1,6 @@
 let resumeData = {
     // "imagebaseurl":"https://rbhatia46.github.io/",
-    "name": "Zowie Ong",
+    "name": "ZOWIE ONG",
     "role": "Data Scientist and AI/ML Developer",
     "linkedinId":" https://www.linkedin.com/in/zowieong",
     "email":" zowieyx@gmail.com",

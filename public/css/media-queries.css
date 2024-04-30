@@ -14,8 +14,8 @@
     /* header styles
    ------------------------------------------------------------------ */
    header .banner-text h1 {
-      font: 80px/1.1em 'opensans-bold', sans-serif;
-      letter-spacing: -1px;
+      font: 80px/1.1em 'Jersey 25', sans-serif;
+      font-weight: 400;
       margin: 0 auto 12px auto;
    }
 
