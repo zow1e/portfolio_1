@@ -13,11 +13,11 @@
 
     /* header styles
    ------------------------------------------------------------------ */
-   header .banner-text h1 {
+   /* header .banner-text h1 {
       font: 80px/1.1em 'Jersey 25', sans-serif;
       font-weight: 400;
       margin: 0 auto 12px auto;
-   }
+   } */
 
 }
 
@@ -29,11 +29,11 @@
    ------------------------------------------------------------------ */
    header .banner { padding-bottom: 12px; }
    header .banner-text h1 {
-      font: 78px/1.1em 'opensans-bold', sans-serif;
+      font: 75px 'Jersey 25', sans-serif;
       letter-spacing: -1px;      
    }
    header .banner-text h3 {
-      font: 17px/1.9em 'librebaskerville-regular', serif;
+      font: 17px 'librebaskerville-regular', serif;
       width: 80%;
    }
    header .banner-text hr {
@@ -191,19 +191,20 @@
       padding-bottom: 12px;
       padding-top: 6px;
    }
-   header .banner-text h1 { font: 68px/1.1em 'opensans-bold', sans-serif; }
+   header .banner-text h1 { font: 68px/1.1em 'Jersey 25', sans-serif; 
+   padding-top: 20px;}
    header .banner-text h3 {
       font: 16px/1.9em 'librebaskerville-regular', serif;
       width: 85%;
    }
    header .banner-text hr {
       width: 80%;
-      margin: 18px auto;
+      margin: 15px auto;
    }
 
    /* header social links */
    header .social {
-      margin: 18px 0 24px 0;
+      margin: 15px 0 10px 0;
       font-size: 24px;
       line-height: 36px;      
    }
@@ -350,8 +351,19 @@
    /* header styles
    -------------------------------------------------------------------- */
    header .banner { padding-top: 24px; }
+
+   header .banner-text {
+      width: 100%; 
+      background-image: url(../images/folder_img.png) ;
+      background-size: auto 90%;
+   
+      background-repeat: no-repeat; /* Optional, adjust as needed */
+      background-position: center; /* Optional, adjust as needed */
+      padding: 50px;
+   }
+
    header .banner-text h1 {
-      font: 40px/1.1em 'opensans-bold', sans-serif;      
+      font: 40px/1.1em 'Jersey 25', sans-serif;      
       margin: 0 auto 24px auto;
    }
    header .banner-text h3 {

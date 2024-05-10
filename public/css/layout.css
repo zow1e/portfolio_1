@@ -30,10 +30,11 @@ body { background: #0f0f0f; }
 
 header {
    position: relative;
-   height: 800px;
+   height: 750px;
    min-height: 500px;
    width: 100%;
-   background: #161415 url(../images/header-background.png) no-repeat top center;
+   background: #161415 url(../images/windows_bg.jpg) no-repeat top center;
+   /* background: #38218b; */
    background-size: cover !important;
 	-webkit-background-size: cover !important;
    text-align: center;
@@ -56,17 +57,28 @@ header .banner {
    text-align: center;
 }
 
-header .banner-text { width: 100%; }
+
+header .banner-text {
+   width: 100%; 
+   background-image: url(../images/folder_img.png) ;
+   background-size: auto 110%;
+
+   background-repeat: no-repeat; /* Optional, adjust as needed */
+   background-position: center; /* Optional, adjust as needed */
+   padding: 60px;
+}
+
 header .banner-text h1 {
-   font: 80px/1.1em 'Jersey 25', sans-serif;
+   font: 80px 'Jersey 25', sans-serif;
    font-weight: 400;
    color: #fff;
-   margin: 0 auto 18px auto;
+   margin: 20px auto 15px auto;
+   
    text-shadow: 0px 1px 3px rgba(0, 0, 0, .8);
 }
 header .banner-text h3 {
-   font: 18px/1.9em 'librebaskerville-regular', serif;
-   color: #A8A8A8;
+   font: 20px 'librebaskerville' sans-serif;
+   color: #f0eaea;
    margin: 0 auto;
    width: 70%;
    text-shadow: 0px 1px 2px rgba(0, 0, 0, .5);
@@ -84,7 +96,7 @@ header .banner-text hr {
 
 /* header social links */
 header .social {
-   margin: 24px 0;
+   margin: 15px 0;
    padding: 0;
    font-size: 30px;
    text-shadow: 0px 1px 2px rgba(0, 0, 0, .8);
@@ -139,7 +151,7 @@ header .scrolldown a:hover { color: #bcddf2; }
    position: fixed;
    left: 0;
    top: 0;
-   background: rgba(188, 221, 242, 0.5);
+   background: rgba(53, 141, 196, 0.626);
 
    /* background: rgba(118, 183, 209, 0.5); */
 }
@@ -558,16 +570,107 @@ ul#nav li.current a { color: #161e3c; }
 	transform: scaleY(1);
 }
 
+/* button learn more */
+
+  
+  button.learn-more {
+   position: relative;
+   display: inline-block;
+   cursor: pointer;
+   outline: none;
+   border: 0;
+   vertical-align: middle;
+   text-decoration: none;
+   background: transparent;
+   padding: 0;
+   font-size: inherit;
+   font-family: inherit;
+   width: 22rem;
+   height: auto;
+   margin-top: 1rem;
+  }
+  
+  button.learn-more .circle {
+   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+   position: relative;
+   display: block;
+   margin: 0;
+   width: 3rem;
+   height: 3rem;
+   padding: 2rem 2rem;
+   background: #1e279e;
+   border-radius: 2rem;
+  }
+  
+  button.learn-more .circle .icon {
+   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   padding: 0rem 0.75rem;
+   margin: auto;
+   background: #fff;
+  }
+  
+  button.learn-more .circle .icon.arrow {
+   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+   left: 0.625rem;
+   width: 1.125rem;
+   height: 0.125rem;
+   background: none;
+  }
+  
+  button.learn-more .circle .icon.arrow::before {
+   position: absolute;
+   content: "";
+   top: -0.29rem;
+   right: 0.0625rem;
+   width: 0.625rem;
+   height: 0.625rem;
+   border-top: 0.125rem solid #fff;
+   border-right: 0.125rem solid #fff;
+   transform: rotate(45deg);
+  }
+  
+  button.learn-more .button-text {
+   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   padding: 0.5rem 2rem;
+   margin: 0.3rem 0 0 1.85rem;
+   color: #111768;
+   font-weight: 700;
+   line-height: 1.6;
+   text-align: center;
+   text-transform: uppercase;
+  }
+  
+  button:hover .circle {
+   width: 100%;
+  }
+  
+  button:hover .circle .icon.arrow {
+   background: #fff;
+   transform: translate(1rem, 0);
+  }
+  
+  button:hover .button-text {
+   color: #fff;
+  }
+
 
 
 
 /* on hover */
-.portfolio-item:hover .overlay {
+.item-wrap:hover .overlay {
 	opacity: 1;
 	-moz-opacity: 1;
 	filter:alpha(opacity=100);
 }
-.portfolio-item:hover .link-icon {
+.item-wrap:hover .link-icon {
    opacity: 1;
 	-moz-opacity: 1;
 	filter:alpha(opacity=100);
