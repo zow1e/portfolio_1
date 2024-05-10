@@ -6,6 +6,24 @@
 
 /* ================================================================== */
 
+/* screenwidth more than 1440
+--------------------------------------------------------------------- */
+@media only screen and (min-width: 1440px) {
+
+   /* header styles
+  ------------------------------------------------------------------ */
+  header {
+   background: #161415 url(../images/windows_bg.jpg) no-repeat top center;
+   background-position: 50%;
+   /* background: #38218b; */
+   background-size: cover !important;
+	-webkit-background-size: cover !important;
+   text-align: center;
+   overflow: hidden;
+}
+
+}
+
 
 /* screenwidth less than 1024px
 --------------------------------------------------------------------- */
@@ -82,12 +100,14 @@
 
    /* Contact Section
    ------------------------------------------------------------------- */
-   #contact .section-head { margin-bottom: 30px; }
+   #contact .section-head { margin-bottom: 30px;}
    #contact .header-col h1:before {
       font-size: 66px;
       line-height: 66px;
    }
    #contact .section-head p.lead { font: 17px/33px opensans-light, sans-serif; }
+
+   /* #contact .row .widget { width: 100%;} */
 
 
 }

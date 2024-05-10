@@ -28,16 +28,16 @@ let resumeData = {
         //   "className":"fa fa-twitter"
         // }
       ],
-    "aboutme":"I am currently a pre-final year student at The LNM Institute of Information Technology and pursuing my B.Tech from here. I am a self taught Full Stack Web Developer, currently diving deeper into Machine Learning. I believe that to be successful in life, one needs to be obsessive with their dreams and keep working towards them.",
+    "aboutme":`Computer Science student at the National University of Singapore`,
 
     "education":[
-      // {
-      //   "UniversityName":"The LNM Insitute of Information Technology",
-      //   "specialization":"Comp",
-      //   // "MonthOfPassing":"Aug",
-      //   "YearOfPassing":"2024 - 2028",
-      //   "Achievements":"Some Achievements"
-      // },
+      {
+        "UniversityName":"Bachelors Degree in Computer Science ",
+        "specialization":"National University of Singapore",
+        // "MonthOfPassing":"Aug",
+        "YearOfPassing":"2024 - 2028",
+        // "Achievements":"Some Achievements"
+      },
       {
         "UniversityName":"Diploma in Applied AI and Analytics",
         "specialization":"Nanyang Polytechnic",

@@ -21,7 +21,7 @@ export default class Home extends Component {
 
         
         <ContactUs resumeData={resumeData}/>
-        <Footer resumeData={resumeData}/>
+        {/* <Footer resumeData={resumeData}/> */}
    
       </div>
     )

@@ -47,23 +47,34 @@ export default  class Resume extends Component {
             </ul> */}
             {/* <pre><h5>{resumeData.skillsDescription}</h5></pre> */}
             <div class="skill-category">
-            <h5>Programming Languages:</h5>
-            <h6>Python, SQL, HTML, CSS, Javascript; D3.js, React.js </h6></div>
+            <table>
+              <tbody>
+                <tr>
+                  <td><h5>Programming Languages:</h5></td>
+                  <td><h6>Python, SQL, HTML, CSS, Javascript; D3.js, React.js</h6></td>
+                </tr>
+                <tr>
+                  <td><h5>Machine Learning Libraries:</h5></td>
+                  <td><h6>Scikit-learn, Pandas, TensorFlow, Keras</h6></td>
+                </tr>
+                <tr>
+                  <td><h5>Data Visualization tools:</h5></td>
+                  <td><h6>Matplotlib, Seaborn, Tableau, Power BI</h6></td>
+                </tr>
+                <tr>
+                  <td><h5>Database Management:</h5></td>
+                  <td><h6>Oracle, AWS Cloud, Google cloud</h6></td>
+                </tr>
+                <tr>
+                  <td><h5>Big Data Processing Platforms:</h5></td>
+                  <td><h6>Databricks, SASViya, KNIME, RapidMiner</h6></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-            <div class="skill-category"><h5>Machine Learning Libraries:</h5>
-            <h6>Scikit-learn, Pandas, TensorFlow, Keras</h6></div>
-
-            <div class="skill-category"><h5>Data Visualization tools:</h5>
-            <h6>Matplotlib, Seaborn, Tableau, Power BI</h6></div>
-
-            <div class="skill-category"><h5>Database Management:</h5>
-            <h6>Oracle, AWS Cloud, Google cloud</h6></div>
-
-            <div class="skill-category"><h5>Big Data Processing Platforms:</h5>
-            <h6>Databricks, SASViya, KNIME, RapidMiner</h6></div>
 
             </div>
-
             </div>
 
 

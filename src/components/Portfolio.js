@@ -46,7 +46,17 @@ export default class Porfolio extends Component {
           </div>
         </div>
       </div>
+
+      <div className='sliding'>
+        <label className="switch">
+          <input type="checkbox" />
+          <span className="slider"></span>
+        </label>
+        <p className="slider-label">Machine Learning</p>
+      </div>
+
+
   </section>
-        );
+      );
   }
 }
