@@ -160,7 +160,7 @@ header .scrolldown a:hover { color: #bcddf2; }
    transition: 1.5s;}
 
 
-.opaque { background-color: #333; }
+/* .opaque { background-color: #333; } */
 
 /* hide toggle button */
 #nav-wrap > a.mobile-btn { display: none; }
@@ -203,6 +203,9 @@ ul#nav li a {
 /* ul#nav li a:active { background-color: transparent !important; } */
 ul#nav li.current a { color: #161e3c; }
 ul#nav li  a:hover { color: #7386db; }
+nav ul li.active a {
+   color: #161e3c !important; /* Set the active color here */
+ }
 
 
 /* ------------------------------------------------------------------ */
@@ -941,7 +944,7 @@ call-to-action .button {
     margin: 0 6px;
     display: inline-block;
     zoom: 1;
-    *display: inline;
+    display: inline;
 }
 .flex-control-paging li a {
     width: 12px;
@@ -1227,7 +1230,7 @@ footer .social-links li:first-child { margin-left: 0; }
   --switch_height: 1em;
   --thumb_color: #e8e8e8;
   --track_color: #e8e8e8;
-  --track_active_color: #888;
+  --track_active_color: #303a65;
   --outline_color: #000;
   font-size: 17px;
   position: relative;
@@ -1251,11 +1254,15 @@ footer .social-links li:first-child { margin-left: 0; }
   cursor: pointer;
   top: 0;
   left: 0;
-  right: 0;
+  right: 2px;
   bottom: 0;
   background-color: var(--track_color);
   transition: .15s;
   border-radius: var(--switch_height);
+  /* display: flex;
+  flex-direction: row;
+  align-items: center; */
+
  }
  
  .slider:before {
@@ -1266,8 +1273,8 @@ footer .social-links li:first-child { margin-left: 0; }
   width: var(--switch_height);
   border: 2px solid var(--outline_color);
   border-radius: 100%;
-  left: -2px;
-  bottom: -2px;
+  left: 0px;
+  bottom: -1px;
   background-color: var(--thumb_color);
   transform: translateY(-0.2em);
   box-shadow: 0 0.2em 0 var(--outline_color);
@@ -1300,7 +1307,7 @@ footer .social-links li:first-child { margin-left: 0; }
 
  .sliding {
    display: flex;
-   align-items: center; /* This will vertically center the child elements */
+   align-items:center; 
  }
  
  .sliding .switch {
@@ -1312,3 +1319,14 @@ footer .social-links li:first-child { margin-left: 0; }
    color: #313131;
 	font-family: 'opensans-bold', sans-serif;
    font-weight: normal;
+ }
+
+
+ .rowtable {
+   width: 90%;
+   position: relative;
+   display: flex;
+   justify-content: center;
+   align-items:first baseline;
+   margin: 10px auto;
+ }

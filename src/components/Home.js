@@ -12,6 +12,7 @@ export default class Home extends Component {
   render() {
     // let resumeData = this.props.resumeData;
     return (
+      <section id="home">
         <div className="Home">
         <Header resumeData={resumeData}/>
         <About resumeData={resumeData}/>
@@ -24,6 +25,7 @@ export default class Home extends Component {
         {/* <Footer resumeData={resumeData}/> */}
    
       </div>
+      </section>
     )
   }
 }
