@@ -28,7 +28,7 @@ let resumeData = {
         //   "className":"fa fa-twitter"
         // }
       ],
-    "aboutme":`Computer Science student at the National University of Singapore`,
+    "aboutme":`Computer Science undergraduate student at the National University of Singapore`,
 
     "education":[
       {
@@ -86,30 +86,34 @@ let resumeData = {
         "skillname":"Reactjs"
       }
     ],
-    "portfolio":[
+    "portfolioData":[
       {
         "id": 1,
         "name":"E-commerce website",
         "description":"Event Website",
-        "imgurl":"/images/portfolio/eventnest.png"
+        "imgurl":"/React-Portfolio/public/images/portfolio/eventnest.png",
+        "skill":"Machine Learning"
       },
       {
         "id": 2,
         "name":"hdb anomaly price prediction",
         "description":"mobileapp",
-        "imgurl":"images/portfolio/project.png"
+        "imgurl":"images/portfolio/project.png",
+        "skill":"Machine Learning"
       },
       {
         "id": 3,
         "name":"sentiment prediction",
         "description":"mobileapp",  
-        "imgurl":"images/portfolio/project2.png"
+        "imgurl":"images/portfolio/project2.png",
+        "skill":"Data Visualisation"
       },
       {
         "id": 4,
         "name":"deep learning image categorisation",
         "description":"mobileapp",
-        "imgurl":"images/portfolio/phone.jpg"
+        "imgurl":"images/portfolio/phone.jpg",
+        "skill":"Deep Learning"
       }
       // {
       //   "id": 5,

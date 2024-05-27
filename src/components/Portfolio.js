@@ -1,84 +1,33 @@
 import React, { Component, useMemo, useState } from "react";
 import { MaterialReactTable, useMaterialReactTable } from "material-react-table";
 
-// Dummy data for the table
-const initialData = [
-  {
-    name: {
-      firstName: "John",
-      lastName: "Doe",
-    },
-    address: "261 Erdman Ford",
-    city: "East Daphne",
-    state: "Kentucky",
-  },
-  {
-    name: {
-      firstName: "Jane",
-      lastName: "Doe",
-    },
-    address: "769 Dominic Grove",
-    city: "Columbus",
-    state: "Ohio",
-  },
-  {
-    name: {
-      firstName: "Joe",
-      lastName: "Doe",
-    },
-    address: "566 Brakus Inlet",
-    city: "South Linda",
-    state: "West Virginia",
-  },
-  {
-    name: {
-      firstName: "Kevin",
-      lastName: "Vandy",
-    },
-    address: "722 Emie Stream",
-    city: "Lincoln",
-    state: "Nebraska",
-  },
-  {
-    name: {
-      firstName: "Joshua",
-      lastName: "Rolluffs",
-    },
-    address: "32188 Larkin Turnpike",
-    city: "Charleston",
-    state: "South Carolina",
-  },
-];
-
-const Example = () => {
+const Example = ({ portfolioData }) => {
   const [showMachineLearning, setShowMachineLearning] = useState(false);
 
   const columns = useMemo(
     () => [
       {
-        accessorKey: "name.firstName",
-        header: "First Name",
-        size: 150,
-      },
-      {
-        accessorKey: "name.lastName",
-        header: "Last Name",
-        size: 150,
-      },
-      {
-        accessorKey: "address",
-        header: "Address",
+        accessorKey: "name",
+        header: "Name",
         size: 200,
       },
       {
-        accessorKey: "city",
-        header: "City",
-        size: 150,
+        accessorKey: "description",
+        header: "Description",
+        size: 300,
       },
       {
-        accessorKey: "state",
-        header: "State",
-        size: 150,
+        accessorKey: "imgurl",
+        header: "Image",
+        size: 200,
+        Cell: ({ cell }) => (
+          <img src={cell.getValue()} alt={cell.row.original.name} style={{ maxWidth: "100px" }} />
+        ),
+      },
+      {
+        accessorKey: "skill",
+        header: "Skill",
+        size: 200,
       },
     ],
     []
@@ -86,10 +35,12 @@ const Example = () => {
 
   const filteredData = useMemo(() => {
     if (showMachineLearning) {
-      return initialData.filter((row) => row.name.lastName === "Doe");
+      return portfolioData.filter((project) =>
+        project.skill.toLowerCase().includes("machine learning")
+      );
     }
-    return initialData;
-  }, [showMachineLearning]);
+    return portfolioData;
+  }, [showMachineLearning, portfolioData]);
 
   const table = useMaterialReactTable({
     columns,
@@ -105,7 +56,8 @@ const Example = () => {
         fontWeight: "normal",
         fontSize: "17px",
         paddingLeft: "30px",
-        paddingY: "20px",
+        paddingY: "16px",
+        lineHeight: "24px",
       },
     },
     muiTableBodyCellProps: {
@@ -168,17 +120,18 @@ const Example = () => {
   );
 };
 
-export default class Porfolio extends Component {
+export default class Portfolio extends Component {
   render() {
+    let resumeData = this.props.resumeData;
+
     return (
       <section id="portfolio">
         <div className="row">
           <div className="twelve columns collapsed">
             <h1>Projects</h1>
-            
           </div>
         </div>
-        <Example />
+        <Example portfolioData={resumeData.portfolioData} />
       </section>
     );
   }
