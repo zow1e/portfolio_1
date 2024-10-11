@@ -105,14 +105,14 @@ let resumeData = {
       {
         "id": 3,
         "name":"sentiment prediction",
-        "description":"mobileapp",  
+        "description":"ETL pipeline, Feature extraction, Unsupervised learning",  
         "imgurl":"images/portfolio/project2.png",
-        "skill":"Data Visualisation"
+        "skill":"Data Visualisation, Machine Learning"
       },
       {
         "id": 4,
         "name":"deep learning image categorisation",
-        "description":"mobileapp",
+        "description":"Train the neural network with 100 pictures for each category, model will predict the input image as one of the three.",
         "imgurl":"images/portfolio/phone.jpg",
         "skill":"Deep Learning"
       },
