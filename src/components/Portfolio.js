@@ -39,7 +39,7 @@ const Example = ({ portfolioData }) => {
       {
         accessorKey: "ghLink",
         header: "Link",
-        Cell: props => <a href={props.row.original.ghLink}>GitHub</a>, 
+        Cell: props => <a href={props.row.original.ghLink}>Project preview</a>, 
         size: 200,
       },
     ],

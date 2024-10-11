@@ -105,44 +105,44 @@ let resumeData = {
         "id": 1,
         "name":"E-commerce website",
         "description":"Event Website",
-        "imgurl":"/React-Portfolio/public/images/portfolio/eventnest.png",
+        "ghLink":"/React-Portfolio/public/images/portfolio/eventnest.png",
         "skill":"Machine Learning, Web development"
       },
       {
-        "id": 2,
+        "id": 6,
         "name":"Prediction of HDB outliers",
         "description":"Unsupervised learning and data analytics were used to create an outlier prediction model. Utilized end-to-end machine learning (ML) operations to deploy the web application on a cloud server",
-        "imgurl":"images/portfolio/project.png",
+        "ghLink":"images/portfolio/project.png",
         "skill":"Machine Learning, Web development"
       },
       {
         "id": 3,
         "name":"sentiment prediction",
         "description":"ETL pipeline, Feature extraction, Unsupervised learning",  
-        "imgurl":"images/portfolio/project2.png",
+        "ghLink":"images/portfolio/project2.png",
         "skill":"Data Visualisation, Machine Learning"
       },
       {
         "id": 4,
         "name":"deep learning image categorisation",
         "description":"Train the neural network with 100 pictures for each category, model will predict the input image as one of the three.",
-        "imgurl":"images/portfolio/phone.jpg",
+        "ghLink":"images/portfolio/phone.jpg",
         "skill":"Deep Learning"
       },
       {
         "id": 5,
         "name":"Prediction of credit risk",
         "description":"Generate a metric to assess the credit risk quality of clients and predict their future payment behavior.",
-        "imgurl":"images/portfolio/phone.jpg",
+        "ghLink":"images/portfolio/phone.jpg",
         "skill":"Machine Learning"
       },
       {
-        "id": 6,
+        "id": 1,
         "name":"Analysis of various American Airlines",
         "description":"Identified and described business problems or areas of interest that are related to the American owned airlines.",
         "imgurl":"images/portfolio/phone.jpg",
         "skill":"Data Visualisation, Natural Language Processing, Machine Learning",
-        "ghLink":"zzschool.github.io/zowie-portfolio"
+        "ghLink":"https://github.com/zow1e/Big-data-project"
       },
       // {
       //   "id": 7,
