@@ -1,3 +1,16 @@
+
+
+// push to git
+/* git add . 
+git commit -m ""
+git push main */
+
+// deploy to github Pages
+/* npm run deploy */
+
+
+
+
 let resumeData = {
     // "imagebaseurl":"https://rbhatia46.github.io/",
     "name": "ZOWIE ONG",
@@ -28,7 +41,7 @@ let resumeData = {
         //   "className":"fa fa-twitter"
         // }
       ],
-    "aboutme":`Computer Science undergraduate at the National University of Singapore, with a specialisation in Artificial Intelligence (AI)`,
+    "aboutme":`Computer Science undergraduate at the National University of Singapore, with a specialisation in Artificial Intelligence (AI).`,
 
     "education":[
       {
@@ -36,14 +49,14 @@ let resumeData = {
         "specialization":"National University of Singapore",
         // "MonthOfPassing":"Aug",
         "YearOfPassing":"2024 - 2028",
-        "Achievements":"NUS Computing Club Deputy Director of Freshman Orientation Program, NUS Greyhats Publicity team, NUS Taekwondo"
+        "Achievements":"NUS Computing Club Deputy Director of Freshman Orientation Program, NUS Greyhats Publicity team, NUS Taekwondo."
       },
       {
         "UniversityName":"Diploma in Applied AI and Analytics, Specialisation in Big data",
         "specialization":"Nanyang Polytechnic",
         // // "MonthOfPassing":"Jan",
         "YearOfPassing":"2024",
-        "Achievements":"Director's List for AY22/23 Semester 2 and AY23/24 Semester 1,\nSchool of IT club Social Sports Secretary, NYP Archery Varsity Team"
+        "Achievements":"Director's List for AY22/23 Semester 2 and AY23/24 Semester 1,  School of IT club Social Sports Secretary, NYP Archery Varsity Team."
       }
       // {
       //   "UniversityName":"Nan Hua High School",
@@ -126,9 +139,10 @@ let resumeData = {
       {
         "id": 6,
         "name":"Analysis of various American Airlines",
-        "description":"www.github.com/zow1e/Big-data-project\nIdentified and described business problems or areas of interest that are related to the American owned airlines.",
+        "description":"Identified and described business problems or areas of interest that are related to the American owned airlines.",
         "imgurl":"images/portfolio/phone.jpg",
-        "skill":"Data Visualisation, Natural Language Processing, Machine Learning"
+        "skill":"Data Visualisation, Natural Language Processing, Machine Learning",
+        "ghLink":"zzschool.github.io/zowie-portfolio"
       },
       // {
       //   "id": 7,

@@ -36,6 +36,12 @@ const Example = ({ portfolioData }) => {
         header: "Skill",
         size: 200,
       },
+      {
+        accessorKey: "ghLink",
+        header: "ghLink",
+        Cell: props => <a href="url"> GitHub</a>, 
+        size: 200,
+      },
     ],
     []
   );
