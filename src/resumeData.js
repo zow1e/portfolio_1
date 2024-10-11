@@ -101,6 +101,15 @@ let resumeData = {
     ],
     // Machine Learning, Natural Language Processing, Deep Learning, Web development, Data Visualisation
     "portfolioData":[
+      
+      {
+        "id": 6,
+        "name":"Analysis of various American Airlines",
+        "description":"Identified and described business problems or areas of interest that are related to the American owned airlines.",
+        "imgurl":"images/portfolio/phone.jpg",
+        "skill":"Data Visualisation, Natural Language Processing, Machine Learning",
+        "ghLink":"https://github.com/zow1e/Big-data-project"
+      },
       {
         "id": 1,
         "name":"E-commerce website",
@@ -109,7 +118,7 @@ let resumeData = {
         "skill":"Machine Learning, Web development"
       },
       {
-        "id": 6,
+        "id": 2,
         "name":"Prediction of HDB outliers",
         "description":"Unsupervised learning and data analytics were used to create an outlier prediction model. Utilized end-to-end machine learning (ML) operations to deploy the web application on a cloud server",
         "ghLink":"images/portfolio/project.png",
@@ -135,14 +144,6 @@ let resumeData = {
         "description":"Generate a metric to assess the credit risk quality of clients and predict their future payment behavior.",
         "ghLink":"images/portfolio/phone.jpg",
         "skill":"Machine Learning"
-      },
-      {
-        "id": 1,
-        "name":"Analysis of various American Airlines",
-        "description":"Identified and described business problems or areas of interest that are related to the American owned airlines.",
-        "imgurl":"images/portfolio/phone.jpg",
-        "skill":"Data Visualisation, Natural Language Processing, Machine Learning",
-        "ghLink":"https://github.com/zow1e/Big-data-project"
       },
       // {
       //   "id": 7,
