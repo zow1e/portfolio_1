@@ -38,8 +38,8 @@ const Example = ({ portfolioData }) => {
       },
       {
         accessorKey: "ghLink",
-        header: "ghLink",
-        Cell: props => <a href="url"> GitHub</a>, 
+        header: "Link",
+        Cell: props => <a href={props.row.original.ghLink}>GitHub</a>, 
         size: 200,
       },
     ],
