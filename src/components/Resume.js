@@ -95,10 +95,13 @@ export default  class Resume extends Component {
                           <span>&bull;</span> <em className="date">{item.MonthOfLeaving} {item.YearOfLeaving}</em></p>
                           <p>
                           {/* {item.Achievements} */}
-                          <span>&bull;</span> Harnessed data analytics and machine learning with python to refine accuracy of test grade prediction and
-                          uncover insights from data.</p><p>
-                          <span>&bull;</span> Achieved through natural language processing and predictive analytics, 
-                          improving the objectivity of test grade prediction and reducing human subjectivity.
+                          <span>&bull;</span> Utilized data analytics and machine learning with python to uncover insights from data and 
+                          refine accuracy of test grade prediction.</p>
+                          <p><span>&bull;</span>Developed machine learning models to streamline the grade prediction process, improve 
+                          objectivity of test grade prediction and reduce human subjectivity.</p>
+                          <p>
+                          <span>&bull;</span> Produced a sentiment prediction model and topic prediction model to identify subjects from
+                          feedback with natural language processing.
                           </p>
                        </div>
 

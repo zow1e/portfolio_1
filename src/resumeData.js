@@ -28,22 +28,22 @@ let resumeData = {
         //   "className":"fa fa-twitter"
         // }
       ],
-    "aboutme":`Computer Science undergraduate student at the National University of Singapore`,
+    "aboutme":`Computer Science undergraduate at the National University of Singapore, with a specialisation in Artificial Intelligence (AI)`,
 
     "education":[
       {
-        "UniversityName":"Bachelors Degree in Computer Science ",
+        "UniversityName":"Bachelors Degree in Computer Science",
         "specialization":"National University of Singapore",
         // "MonthOfPassing":"Aug",
         "YearOfPassing":"2024 - 2028",
-        // "Achievements":"Some Achievements"
+        "Achievements":"NUS Computing Club Deputy Director of Freshman Orientation Program, NUS Greyhats Publicity team, NUS Taekwondo"
       },
       {
-        "UniversityName":"Diploma in Applied AI and Analytics",
+        "UniversityName":"Diploma in Applied AI and Analytics, Specialisation in Big data",
         "specialization":"Nanyang Polytechnic",
         // // "MonthOfPassing":"Jan",
         "YearOfPassing":"2024",
-        // "Achievements":"Re"
+        "Achievements":"Director's List for AY22/23 Semester 2 and AY23/24 Semester 1,\nSchool of IT club Social Sports Secretary, NYP Archery Varsity Team"
       }
       // {
       //   "UniversityName":"Nan Hua High School",
@@ -86,20 +86,21 @@ let resumeData = {
         "skillname":"Reactjs"
       }
     ],
+    // Machine Learning, Natural Language Processing, Deep Learning, Web development, Data Visualisation
     "portfolioData":[
       {
         "id": 1,
         "name":"E-commerce website",
         "description":"Event Website",
         "imgurl":"/React-Portfolio/public/images/portfolio/eventnest.png",
-        "skill":"Machine Learning"
+        "skill":"Machine Learning, Web development"
       },
       {
         "id": 2,
-        "name":"hdb anomaly price prediction",
-        "description":"mobileapp",
+        "name":"Prediction of HDB outliers",
+        "description":"Unsupervised learning and data analytics were used to create an outlier prediction model. Utilized end-to-end machine learning (ML) operations to deploy the web application on a cloud server",
         "imgurl":"images/portfolio/project.png",
-        "skill":"Machine Learning"
+        "skill":"Machine Learning, Web development"
       },
       {
         "id": 3,
@@ -114,19 +115,21 @@ let resumeData = {
         "description":"mobileapp",
         "imgurl":"images/portfolio/phone.jpg",
         "skill":"Deep Learning"
-      }
-      // {
-      //   "id": 5,
-      //   "name":"project4",
-      //   "description":"mobileapp",
-      //   "imgurl":"images/portfolio/phone.jpg"
-      // },
-      // {
-      //   "id": 6,
-      //   "name":"project4",
-      //   "description":"mobileapp",
-      //   "imgurl":"images/portfolio/phone.jpg"
-      // },
+      },
+      {
+        "id": 5,
+        "name":"Prediction of credit risk",
+        "description":"Generate a metric to assess the credit risk quality of clients and predict their future payment behavior.",
+        "imgurl":"images/portfolio/phone.jpg",
+        "skill":"Machine Learning"
+      },
+      {
+        "id": 6,
+        "name":"Analysis of various American Airlines",
+        "description":"www.github.com/zow1e/Big-data-project\nIdentified and described business problems or areas of interest that are related to the American owned airlines.",
+        "imgurl":"images/portfolio/phone.jpg",
+        "skill":"Data Visualisation, Natural Language Processing, Machine Learning"
+      },
       // {
       //   "id": 7,
       //   "name":"project4",
@@ -150,7 +153,7 @@ let resumeData = {
       {
         "id": 2,
         "name":"Prediction of credit risk",
-        "description":"Predict a metric to assess the credit risk quality of clients and predict their future payment behavior.",
+        "description":"Generate a metric to assess the credit risk quality of clients and predict their future payment behavior.",
         "imgurl":"/images/portfolio/eventnest.png"
       },
     ],
