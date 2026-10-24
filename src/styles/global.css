@@ -1,0 +1,55 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../assets/fonts/open-sans-regular.woff') format('woff');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../assets/fonts/open-sans-semibold.woff') format('woff');
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+:root {
+  --background: #f8f7f2;
+  --paper: #fffefa;
+  --ink: #263e38;
+  --supporting: #3f5146;
+  --green: #557247;
+  --accent: #9a642f;
+  --border: #cdd5c4;
+  --link: #365b3f;
+  --chip-background: #e3ebd8;
+  --chip-text: #2e4934;
+  --control-border: #7b8d70;
+}
+
+* { box-sizing: border-box; }
+html { scroll-padding-top: 24px; }
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--ink);
+  font: 400 16px/1.75 'Open Sans', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-underline-offset: 5px; }
+a:hover { text-decoration-thickness: 2px; }
+button { font: inherit; cursor: pointer; }
+button, a, summary { touch-action: manipulation; }
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 5px;
+}
+h1, h2, h3, h4, p { margin-top: 0; }
+h1, h2, h3, h4 { line-height: 1.25; font-weight: 600; }
+h1, h2 { letter-spacing: -.04em; }
+h3 { letter-spacing: -.02em; }
+::selection { background: #d6e8ba; color: var(--ink); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+}

@@ -1,33 +1,18 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Routes, Route  } from 'react-router-dom';
-// import Header from './components/Header';
-// import About from './components/About';
-// import Resume from './components/Resume';
-// import Portfolio from './components/Portfolio';
-// import Testimonials from  './components/Testimonials';
-// import ContactUs from './components/ContactUs';
-// import Footer from './components/Footer';
-// import resumeData from './resumeData';
-import './App.css';
-import Home from './components/Home';
-import Moreprojs from './components/Moreprojs';
-
-
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import PortfolioPage from './PortfolioPage';
+import './styles/portfolio.css';
 
 export default function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path='/zowie-portfolio' element={<Home />} />
-          <Route path="/zowie-portfolio/moreprojects" element={<Moreprojs />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<PortfolioPage />} />
+        <Route path="/zowie-portfolio" element={<PortfolioPage />} />
+        <Route path="/zowie-portfolio/moreprojects" element={<PortfolioPage archive />} />
+        <Route path="/moreprojects" element={<PortfolioPage archive />} />
+        <Route path="*" element={<main className="not-found"><h1>Page not found</h1><a href={process.env.PUBLIC_URL + '/'}>Back to the portfolio</a></main>} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
-
-
-
-
-// export default Home;
