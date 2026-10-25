@@ -23,6 +23,10 @@ export const projects = [
       {
         "label": "Normalization code",
         "path": "packages/listings-ingestion/src/normalizers/productListing.ts"
+      },
+      {
+        "label": "Project README",
+        "path": "README.md"
       }
     ],
     "note": "Prototype · Some services remain scaffolds; no production or evaluation claims."
@@ -77,6 +81,10 @@ export const projects = [
       {
         "label": "Individual report",
         "path": "zowie_appendixD.docx"
+      },
+      {
+        "label": "Project README",
+        "path": "README.md"
       }
     ],
     "note": "Team project · Larger source datasets are omitted from the repository."
@@ -103,6 +111,10 @@ export const projects = [
       {
         "label": "VGG16 notebook",
         "path": "assignment23aug/part1Transfer.ipynb"
+      },
+      {
+        "label": "Project README",
+        "path": "README.md"
       }
     ],
     "note": "Course project · Notebooks discuss overfitting and dataset limitations."
@@ -129,6 +141,10 @@ export const projects = [
       {
         "label": "Preprocessing",
         "path": "NLP - preprocessing.ipynb"
+      },
+      {
+        "label": "Project README",
+        "path": "README.md"
       }
     ],
     "note": "Course project · Notebook discusses class imbalance and per-class performance."
@@ -155,9 +171,13 @@ export const projects = [
       {
         "label": "Data & filter logic",
         "path": "task1/js/main.js"
+      },
+      {
+        "label": "Project README",
+        "path": "README.md"
       }
     ],
-    "note": "No README is present. Assignment source was reviewed; no live demo or performance results were verified."
+    "note": "Coursework assignment; no live demo or performance results were independently verified."
   },
   {
     "id": "aa",
@@ -181,9 +201,13 @@ export const projects = [
       {
         "label": "Aggregation code",
         "path": "js/main.js"
+      },
+      {
+        "label": "Project README",
+        "path": "README.md"
       }
     ],
-    "note": "No README is present. The referenced data/small.csv is absent; filter logic includes inconsistencies. No working-demo claim is made. The P7 notebook is a cloud-storage setup practical, not model training."
+    "note": "The sample CSV is stored at the repository root; code requests data/small.csv. The README explains the local path setup. Filter logic includes inconsistencies. No working-demo or model-training claim is made."
   }
 ];
 export const repositoryUrl = project => `${github}/${project.repo}`;

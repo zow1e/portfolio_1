@@ -61,6 +61,26 @@ Verified the current module paths: `src/sections/Projects.js` imports `../data/p
 
 If logs still reference `components/Portfolio.js` or `../projects`, stop the previous development server with Ctrl+C and restart from this project directory using the commands above. Confirm that the editor and terminal are using the same checkout. Both the production build and a fresh development server compiled successfully for this update.
 
-The eight automated tests pass. Browser checks at 1440, 768, 375, and 320 pixels verified all seven cards, 21 visible skill chips, category filtering/reset, the retained software disclosure/archive route, keyboard skip-link access, and no horizontal overflow or failed resources. Computed text contrast passed 4.5:1 for normal text and 3:1 for large text, including expanded project details. Desktop/phone screenshots were inspected. This is a focused check, not a full assistive-technology audit.
+The nine automated tests pass. Browser checks at 1440, 768, 375, and 320 pixels verified all seven cards, 21 visible skill chips, category filtering/reset, the retained software disclosure/archive route, keyboard skip-link access, and no horizontal overflow or failed resources. Computed text contrast passed 4.5:1 for normal text and 3:1 for large text, including expanded project details. Desktop/phone screenshots were inspected. This is a focused check, not a full assistive-technology audit.
 
 Existing warnings remain: Node and webpack-dev-server deprecations, the CRA/Babel undeclared-plugin dependency notice, and outdated Browserslist data. These are separate from compile errors. No dependency upgrade or audit remediation was performed; npm audit vulnerability counts have not been rechecked or resolved by this update.
+
+## Navigation, typography, and project documentation
+
+The top navigation remains sticky while browsing the existing full-width sections. Anchor offsets leave section headings visible on desktop and phones. The introduction remains concise and in its original position; no sidebar was introduced.
+
+Headings and technical labels use a system monospace stack (`ui-monospace`, Cascadia Code, SFMono-Regular, Consolas, Liberation Mono, monospace). Body copy keeps the bundled Open Sans fonts. No font downloads or dependencies were added. A restrained receipt treatment appears only in expanded “Technical notes”, using dashed rules and readable text.
+
+Each of the seven main project cards now links to its repository README. Those READMEs were reviewed against the current source and updated on GitHub; the three software projects in the separate disclosure were left untouched. See the update record in [PROJECT_REVIEW.md](PROJECT_REVIEW.md) for exact commits and verification limits. Nothing was deployed.
+
+## Desktop About receipt
+
+At widths of **1200px and above**, the existing About and education section becomes a left-hand receipt beside Experience and Selected Work. CSS sticky positioning is bounded by their shared work area, so the panel releases before Contact and cannot overlap the main column. Its height is limited to the available viewport; focus the receipt and use arrow/PageDown keys to read overflowing content.
+
+Below 1200px the receipt styling, sticky positioning, height limit, and extra focus stop are removed. The single About section remains in the original reading order: Experience, Selected Work, About/education, Contact. Content is not duplicated or hidden behind a second mobile/desktop copy.
+
+Verified at 1440, 1200, 1199, 375, and 320 pixels, including sticky release at Contact, keyboard scrolling, narrow-screen flow, category filtering, no horizontal overflow, and text contrast. The production build and nine tests pass; existing toolchain warnings remain. No deployment was performed.
+
+The desktop receipt uses a narrow paper shape with shallow torn edges, faint CSS fiber grain, print-style separators, and an inset keyboard focus ring. These visual effects are restricted to the expanded layout; its sticky boundary and internal scrolling are unchanged. The Experience-to-Selected Work transition uses one rule inside the content container: the last internship border and duplicate section border are removed, with controlled spacing on either side.
+
+The sticky navigation and hero have a subtle pixel/grid background built from one small repeating SVG and CSS transform animation. It is clipped to those two areas, sits behind their content, and ignores pointer input. Mobile uses lower opacity; `prefers-reduced-motion: reduce` disables movement. No JavaScript animation loop, external service, or dependency was added. Verified at 1440/375/320px for motion, reduced-motion mode, link hit targets, keyboard focus, no horizontal overflow, and no failed resources; build and nine tests pass.

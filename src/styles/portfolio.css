@@ -3,20 +3,21 @@
 .section { padding-block: 76px; }
 h2 { font-size: clamp(30px, 3.2vw, 38px); margin-bottom: 36px; }
 h2 > span, .name-dot { color: var(--accent); }
-.eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .12em; margin-bottom: 18px; }
-.skip-link { position: absolute; top: -100px; left: 20px; z-index: 10; padding: 12px 20px; background: var(--ink); color: #fff; }
+.eyebrow { font-family: var(--technical-font); font-size: 13px; font-weight: 600; letter-spacing: .12em; margin-bottom: 18px; }
+.skip-link { position: absolute; top: -100px; left: 20px; z-index: 30; padding: 12px 20px; background: var(--ink); color: #fff; }
 .skip-link:focus { top: 12px; }
 
-/* Navigation and introduction */
-.navigation { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px; padding-block: 22px; border-bottom: 1px solid var(--border); }
+/* Navigation stays available beyond the introduction without adding a sidebar. */
+.site-nav { position: sticky; top: 0; z-index: 20; background: var(--background); border-bottom: 1px solid var(--border); }
+.navigation { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px; padding-block: 16px; }
 .wordmark { font-size: 36px; font-weight: 600; line-height: 1; text-decoration: none; letter-spacing: -4px; }
 .wordmark span { color: var(--accent); }
 .nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 30px; font-size: 15px; }
 .nav-links a { display: inline-flex; min-height: 44px; align-items: center; text-decoration: none; }
 .nav-links a:hover { text-decoration: underline; }
 .hero { display: grid; grid-template-columns: 1.5fr 1fr; gap: 64px; align-items: center; padding-block: 76px; }
-h1 { font-size: clamp(42px, 4.4vw, 58px); margin-bottom: 28px; }
-.serif { font-family: Georgia, serif; font-style: italic; font-weight: 400; color: var(--green); }
+h1 { font-size: clamp(38px, 3.8vw, 50px); margin-bottom: 28px; }
+.hero-accent { font-weight: 400; color: var(--green); }
 .intro { max-width: 580px; color: var(--supporting); font-size: 18px; line-height: 1.8; }
 .intro strong { color: var(--ink); font-weight: 600; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 28px; margin-top: 30px; }
@@ -27,9 +28,45 @@ h1 { font-size: clamp(42px, 4.4vw, 58px); margin-bottom: 28px; }
 .desktop-note { background: #eaf0df; border: 1px solid #9da995; border-radius: 8px; box-shadow: 6px 7px 0 #e1e4d8; transform: rotate(2deg); }
 .window-bar { display: flex; gap: 6px; background: #dce6cb; border-bottom: 1px solid #b9c2ab; border-radius: 8px 8px 0 0; padding: 13px 18px; }
 .window-bar span { width: 7px; height: 7px; border: 1px solid #7c8c70; border-radius: 50%; }
-.desktop-note p { padding: 30px 28px 34px; margin: 0; font: 400 27px/1.6 Georgia, serif; }
-.desktop-note em { color: var(--green); }
+.desktop-note p { padding: 30px 28px 34px; margin: 0; font: 400 22px/1.7 var(--technical-font); }
+.desktop-note em { color: var(--green); font-style: normal; }
 
+/* Decorative pixels are contained behind the sticky navigation and hero only.
+   Two small repeating SVG layers animate in the compositor; no JS animation loop. */
+.site-nav, #home { isolation: isolate; overflow: clip; }
+#home { position: relative; background-color: var(--background); }
+.site-nav::before, #home::before,
+.site-nav::after, #home::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+}
+.site-nav::before, #home::before {
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(85, 114, 71, .025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(85, 114, 71, .025) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+.site-nav::after, #home::after {
+  inset: -16px;
+  background-image: url('../assets/pixel-field.svg');
+  background-size: 384px 224px;
+  opacity: .55;
+  animation: pixel-drift 48s steps(12, end) infinite alternate;
+}
+.site-nav::after { background-position: 96px 32px; animation-delay: -16s; }
+@keyframes pixel-drift {
+  from { transform: translate(-6px, -4px); }
+  to { transform: translate(6px, 4px); }
+}
+@media (max-width: 640px) {
+  .site-nav::after, #home::after { opacity: .4; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-nav::after, #home::after { animation: none; transform: none; opacity: .35; }
+}
 /* Resume-supported experience */
 .experience-section { border-top: 1px solid var(--border); }
 .experience-list { border-top: 1px solid var(--border); }
@@ -39,6 +76,11 @@ h1 { font-size: clamp(42px, 4.4vw, 58px); margin-bottom: 28px; }
 .employer { margin-bottom: 0; padding-left: 12px; border-left: 3px solid #a2b491; color: var(--link); font-size: 16px; font-weight: 600; line-height: 1.7; }
 .experience-highlights { margin: 0; padding-left: 20px; color: var(--supporting); }
 .experience-highlights li + li { margin-top: 12px; }
+/* One content-aligned rule owns the work-section boundary. */
+.work-content .experience-section { padding-bottom: 0; }
+.work-content .experience-row:last-child { border-bottom: 0; }
+.work-content .projects-section { padding-top: 0; border-top: 0; }
+.work-content .projects-section > .container { border-top: 1px solid var(--border); padding-top: 48px; }
 .experience-content { min-width: 0; }
 .internship-skills { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 22px 0 0; }
 .internship-skills li { padding: 5px 11px; border: 1px solid #b7c5aa; border-radius: 6px; background: var(--chip-background); color: var(--chip-text); font-size: 15px; line-height: 1.6; }
@@ -53,7 +95,7 @@ h1 { font-size: clamp(42px, 4.4vw, 58px); margin-bottom: 28px; }
 .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; align-items: start; }
 .project-card { box-shadow: 0 2px 8px #263e3805; min-width: 0; border: 1px solid var(--border); border-radius: 10px; padding: 30px; background: var(--paper); }
 .project-category { display: inline-block; max-width: 100%; padding: 5px 12px; margin-bottom: 18px; border-left: 3px solid var(--green); border-radius: 3px; background: #edf1e6; color: var(--ink); font-size: 15px; font-weight: 600; line-height: 1.6; }
-.project-card h3 { margin-bottom: 18px; font-size: 27px; }
+.project-card h3 { margin-bottom: 18px; font-size: 25px; }
 .project-summary { color: var(--ink); font-size: 17px; margin-bottom: 20px; }
 .contribution { color: var(--supporting); font-size: 15px; line-height: 1.8; margin-bottom: 20px; }
 .contribution strong { font-weight: 600; color: var(--ink); }
@@ -65,7 +107,9 @@ h1 { font-size: clamp(42px, 4.4vw, 58px); margin-bottom: 28px; }
 summary { cursor: pointer; }
 .project-details[open] { flex-basis: 100%; }
 .project-details summary { padding-block: 4px; }
-.project-details > div { padding-top: 20px; color: var(--supporting); }
+.project-details > .technical-breakdown { margin-top: 16px; padding: 18px; border-block: 1px dashed var(--control-border); background: var(--background); color: var(--ink); }
+.technical-breakdown .breakdown-label { margin-bottom: 16px; font: 600 14px/1.6 var(--technical-font); letter-spacing: .04em; text-transform: uppercase; }
+.technical-breakdown ul { border-top: 1px dashed var(--border); padding-top: 16px; }
 .project-details p { margin-bottom: 16px; }
 .project-details ul { padding-left: 20px; margin-bottom: 0; }
 .project-details a, .archive-grid a, .all-repos { color: var(--link); }
@@ -115,16 +159,17 @@ summary { cursor: pointer; }
 }
 
 @media (max-width: 640px) {
+  :root { --nav-offset: 160px; }
   .container { width: calc(100% - 36px); }
   .section { padding-block: 48px; }
   .navigation { padding-block: 18px; }
-  .nav-links { gap: 4px 20px; font-size: 14px; }
+  .nav-links { gap: 4px 14px; font-size: 14px; }
   .hero { display: block; padding-block: 48px; }
-  h1 { font-size: clamp(37px, 8.8vw, 48px); }
+  h1 { font-size: clamp(32px, 8vw, 42px); }
   h2 { font-size: 31px; margin-bottom: 28px; }
   .intro { font-size: 17px; }
   .desktop-note { display: none; }
-  .eyebrow { font-size: 12px; }
+  .eyebrow { font-family: var(--technical-font); font-size: 12px; }
   .experience-row { grid-template-columns: 1fr; gap: 20px; padding-block: 28px; }
   .experience-dates { font-size: 14px; }
   .experience-highlights { font-size: 16px; }
@@ -133,8 +178,91 @@ summary { cursor: pointer; }
   .project-card h3 { font-size: 25px; }
   .project-category { margin-bottom: 12px; }
   .project-summary { color: var(--ink); font-size: 17px; }
+  .work-content .projects-section > .container { padding-top: 36px; }
   .filters { gap: 9px; }
   .filters button { font-size: 14px; padding-inline: 15px; }
   .about-grid, .contact-grid { gap: 30px; }
   .footer > .container { font-size: 13px; }
+}
+
+/* A single About section becomes a bounded receipt beside the work on wide screens.
+   Its DOM position stays after Selected Work, preserving the narrow-screen order. */
+@media (min-width: 1200px) {
+  .work-about-layout {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    align-items: start;
+    gap: 48px;
+    width: min(1440px, calc(100% - 80px));
+    margin-inline: auto;
+    padding-block: 76px;
+  }
+
+  .work-content {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+  }
+
+  .work-content .container { width: 100%; }
+  .work-content .experience-section { padding-top: 0; border-top: 0; }
+  .work-content .experience-row { gap: 28px; }
+  .work-content .projects-section { padding-bottom: 0; background: transparent; border-bottom: 0; }
+  .work-content .project-card { padding: 26px; }
+
+  .work-about-layout > .about-section {
+    grid-column: 1;
+    grid-row: 1;
+    position: sticky;
+    top: var(--nav-offset);
+    max-height: calc(100dvh - var(--nav-offset) - 24px);
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-color: var(--control-border) transparent;
+    padding: 28px 24px;
+    /* Faint fiber grain and a soft ink tint keep the paper calm and legible. */
+    background-color: var(--paper);
+    background-image:
+      radial-gradient(rgba(63, 81, 70, .035) .55px, transparent .8px),
+      linear-gradient(90deg, rgba(85, 114, 71, .025), transparent 18%, rgba(85, 114, 71, .015));
+    background-size: 4px 4px, 100% 100%;
+    border: 0;
+    /* Shallow, slightly uneven cuts suggest a torn thermal-paper roll. */
+    clip-path: polygon(
+      0 4px, 5% 0, 10% 5px, 15% 1px, 20% 4px, 25% 0,
+      30% 5px, 35% 1px, 40% 4px, 45% 0, 50% 5px, 55% 1px,
+      60% 4px, 65% 0, 70% 5px, 75% 1px, 80% 4px, 85% 0,
+      90% 5px, 95% 1px, 100% 4px,
+      100% calc(100% - 4px), 95% 100%, 90% calc(100% - 5px),
+      85% calc(100% - 1px), 80% calc(100% - 4px), 75% 100%,
+      70% calc(100% - 5px), 65% calc(100% - 1px), 60% calc(100% - 4px),
+      55% 100%, 50% calc(100% - 5px), 45% calc(100% - 1px),
+      40% calc(100% - 4px), 35% 100%, 30% calc(100% - 5px),
+      25% calc(100% - 1px), 20% calc(100% - 4px), 15% 100%,
+      10% calc(100% - 5px), 5% calc(100% - 1px), 0 calc(100% - 4px)
+    );
+  }
+
+  .work-about-layout > .about-section:focus-visible {
+    /* An inset focus ring remains visible inside the clipped paper edge. */
+    outline: none;
+    box-shadow: inset 0 0 0 3px var(--accent);
+  }
+
+  .work-about-layout .about-grid {
+    display: block;
+    width: 100%;
+  }
+
+  .work-about-layout .about-section .eyebrow { text-align: center; padding-bottom: 16px; border-bottom: 1px dashed var(--control-border); letter-spacing: .16em; }
+  .work-about-layout .about-section h2 { text-align: center; font-size: 25px; margin-bottom: 22px; }
+  .work-about-layout .education-dates { font-family: var(--technical-font); font-variant-numeric: tabular-nums; }
+  .work-about-layout .about-grid > div > p:not(.eyebrow) { font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
+  .work-about-layout .education { margin-top: 26px; padding-top: 24px; border-top: 1px dashed var(--control-border); }
+  .work-about-layout .education h3 { font-size: 19px; margin-bottom: 22px; }
+  .work-about-layout .education h4 { font-size: 17px; }
+  .work-about-layout .education-qualification strong { font-size: 16px; }
+  .work-about-layout .education p, .work-about-layout .education-details { font-size: 15px; }
+  .work-about-layout .education article + article { border-top-style: dashed; }
 }

@@ -1,16 +1,14 @@
 import React from 'react';
-import Navbar from '../layout/Navbar';
 import { profile } from '../data/profile';
 
 export default function Hero() {
   return (
     <header id="home">
       <div className="container">
-        <Navbar />
         <div className="hero">
           <div>
             <p className="eyebrow">DATA · MACHINE LEARNING · AI</p>
-            <h1>Hi, I’m Zowie<span className="name-dot">.</span><br /><span className="serif">Curious by nature.</span></h1>
+            <h1>Hi, I’m Zowie<span className="name-dot">.</span><br /><span className="hero-accent">Curious by nature.</span></h1>
             <p className="intro">Computer Science undergraduate at NUS, pursuing opportunities in <strong>data science, machine learning, and AI engineering.</strong></p>
             <div className="hero-actions">
               <a className="button primary" href="#portfolio">Explore my work <span aria-hidden="true">↓</span></a>

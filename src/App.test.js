@@ -28,7 +28,7 @@ function primaryCards() {
 
 it('places the three résumé-supported internships before projects', () => {
   render();
-  const sections = [...container.querySelector('main').children];
+  const sections = [...container.querySelector('main').querySelectorAll('section')];
   expect(sections.map(section => section.id)).toEqual(['resume', 'portfolio', 'about', 'contact']);
   const jobs = [...container.querySelectorAll('.experience-meta')];
   expect(jobs).toHaveLength(3);
@@ -105,4 +105,15 @@ it('offers a way home for an unknown route', () => {
   render('/unknown');
   expect(container.querySelector('h1').textContent).toBe('Page not found');
   expect(container.querySelector('a')).not.toBeNull();
+});
+
+it('bounds the single About receipt to Experience and Selected Work', () => {
+  render();
+  const workArea = container.querySelector('.work-about-layout');
+  expect(workArea.contains(container.querySelector('#resume'))).toBe(true);
+  expect(workArea.contains(container.querySelector('#portfolio'))).toBe(true);
+  expect(workArea.contains(container.querySelector('#about'))).toBe(true);
+  expect(workArea.contains(container.querySelector('#contact'))).toBe(false);
+  expect(container.querySelectorAll('#about')).toHaveLength(1);
+  expect(container.querySelector('#about').hasAttribute('tabindex')).toBe(false);
 });

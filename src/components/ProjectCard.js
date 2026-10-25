@@ -15,7 +15,8 @@ export default function ProjectCard({ project }) {
         <a className="repository-link" href={repositoryUrl(project)} aria-label={`${project.title} on GitHub`}>GitHub ↗</a>
         <details className="project-details">
           <summary>Approach & sources</summary>
-          <div>
+          <div className="technical-breakdown">
+            <p className="breakdown-label">Technical notes</p>
             <p>{project.approach}</p>
             {!project.ownership && <p>{project.contribution}</p>}
             <p>{project.note}</p>

@@ -88,3 +88,33 @@ Dark green supporting text replaces the previous muted copy colour. Coordinated 
 The reported missing-module errors were not reproducible in the current files. Both referenced stylesheets exist and the active project components import `src/data/projects.js` correctly. The old `src/components/Portfolio.js` is absent and unused. Verified a fresh development-server compilation and production build; neither reported missing modules. No placeholder files, dependency upgrades, or audit fixes were added.
 
 All eight updated tests pass. Headless Edge checks at 1440/768/375/320 pixels passed for seven visible cards, 21 skill chips, filters/reset, software/archive behavior, keyboard skip link, expanded-detail width, resource loading, and text contrast. Existing Node/webpack-dev-server, CRA/Babel, and Browserslist warnings remain. Vulnerability counts were not rechecked or remediated. Nothing was deployed.
+
+## README refresh and technical visual treatment — 25 October 2026
+
+Cloned the current `main` branch of exactly the seven projects in the main showcase, read their existing documentation and relevant source, and edited only each repository's root `README.md`. Four existing READMEs were revised; AY22-y2, adv, and aa received new READMEs because none existed. All repositories were accessible. No files in ip, tp, overflowz, PyHipp, or javafx-tutorial were edited.
+
+| Repository | README-only commit |
+| --- | --- |
+| [3monkfish](https://github.com/zow1e/3monkfish/blob/main/README.md) | [5ef96ee](https://github.com/zow1e/3monkfish/commit/5ef96ee) |
+| [MLOPS](https://github.com/zow1e/MLOPS/blob/main/README.md) | [c57a2af](https://github.com/zow1e/MLOPS/commit/c57a2af) |
+| [Big-data-project](https://github.com/zow1e/Big-data-project/blob/main/README.md) | [de0421b](https://github.com/zow1e/Big-data-project/commit/de0421b) |
+| [ADL](https://github.com/zow1e/ADL/blob/main/README.md) | [855dd50](https://github.com/zow1e/ADL/commit/855dd50) |
+| [AY22-y2](https://github.com/zow1e/AY22-y2/blob/main/README.md) | [e260d97](https://github.com/zow1e/AY22-y2/commit/e260d97) |
+| [adv](https://github.com/zow1e/adv/blob/main/README.md) | [9d02f23](https://github.com/zow1e/adv/commit/9d02f23) |
+| [aa](https://github.com/zow1e/aa/blob/main/README.md) | [0daa6a4](https://github.com/zow1e/aa/commit/0daa6a4) |
+
+The review checked manifests, API/UI and ingestion/RAG code in 3monkfish; requirements/configuration, Flask inference and modeling notebooks in MLOPS; the three airline-analysis notebooks and input paths; ADL CNN/VGG16 and recurrent-text notebooks plus archive inventories; AY22 NLP, topic-modeling and scraping imports/cells; and the two HDB dashboards' HTML, aggregations, chart handlers and dataset locations. README Markdown links were checked against the checkout files.
+
+Important corrections: 3monkfish includes an actual React UI and RAG chat route, even though its old README described the frontend as future work. Big-data-project does not contain the input CSVs its notebook references. The aa repository contains `small.csv` at its root, while code requests `data/small.csv`; its new README explains preparing that path. No application code was changed to address these gaps. Existing claims about individual/team work and experiment limitations remain qualified.
+
+The documentation describes source-supported setup steps, but the external projects' model training, services, cloud credentials and full dependency installations were not executed. GitHub reported existing Dependabot findings for MLOPS during the documentation push; no dependency remediation was performed.
+
+The portfolio now uses sticky top navigation, existing Open Sans body fonts paired with system monospace headings, and subtle dashed receipt rules limited to expanded technical notes. The seven project cards link directly to the refreshed READMEs. The portfolio itself was not pushed or deployed in this update.
+
+Browser checks at 1440/768/375/320 pixels verified sticky positioning and unobscured section targets, seven cards and their skill tags, filters, legacy routes, keyboard focus, no overflow/runtime errors, and WCAG AA text contrast across the expanded page. The existing eight tests pass and the production build succeeds; inherited CRA/Babel, Node, and Browserslist warnings remain.
+
+## Bounded desktop About receipt — 25 October 2026
+
+The single About section is visually placed in a left receipt column at 1200px and above, while its DOM position remains after Selected Work. A shared grid contains only Experience, Selected Work, and About; Contact remains outside the sticky boundary. A viewport-height cap and overflow scrolling keep all education content reachable. The scrollable region receives a keyboard focus stop only in the expanded layout and retains its accessible section heading.
+
+Below the breakpoint the existing section layout, content, and order are preserved, with no receipt border, internal scrolling, extra tab stop, or duplicate About instance. No new dependencies or data claims were introduced. Build and nine tests pass. Browser checks at 1440/1200/1199/375/320 pixels verified separation from the work column, sticking through both work sections, release before Contact, keyboard PageDown scrolling, normal narrow-screen flow, filter operation, no overflow/runtime errors, and AA text-contrast thresholds. Desktop and phone screenshots were inspected after rendering settled. Existing build/test warnings remain; nothing was deployed.
