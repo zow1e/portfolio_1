@@ -27,7 +27,7 @@ The build goes to `build/`. `package.json` retains the original `/zowie-portfoli
 ```text
 src/
   assets/fonts/        Two local Open Sans font files
-  components/          Shared project cards and category filters
+  components/          Taped section cards, project cards, and category filters
   data/                Project descriptions, profile, education, and experience
   layout/              Navigation and footer
   sections/            Hero, experience, projects, about, and contact
@@ -49,7 +49,7 @@ Unused starter components, duplicate historical résumé data, sample logo, lega
 
 - Edit `src/data/profile.js` for contact details, education, and résumé-supported experience.
 - Edit `src/data/projects.js` for descriptions, categories, technology labels, links, contribution evidence.
-- All seven data/ML/AI projects appear directly in the main showcase, with the strongest work first. Category filters narrow this list; only “Other software projects” remains collapsed.
+- Inside Projects, all seven data/ML/AI projects appear in the main showcase, with the strongest work first. Category filters narrow this list; Other software projects has its own nested disclosure.
 - Verified technologies appear as skill chips on every card. Keep concise goal and contribution text in the overview. Technical context, limitations, and source links belong in the expandable “Approach & sources” content.
 - Experience is placed after the header and before projects. Its facts come from `Zowie_resumeDS.pdf`; changing the PDF does not automatically update the site.
 
@@ -61,26 +61,37 @@ Verified the current module paths: `src/sections/Projects.js` imports `../data/p
 
 If logs still reference `components/Portfolio.js` or `../projects`, stop the previous development server with Ctrl+C and restart from this project directory using the commands above. Confirm that the editor and terminal are using the same checkout. Both the production build and a fresh development server compiled successfully for this update.
 
-The nine automated tests pass. Browser checks at 1440, 768, 375, and 320 pixels verified all seven cards, 21 visible skill chips, category filtering/reset, the retained software disclosure/archive route, keyboard skip-link access, and no horizontal overflow or failed resources. Computed text contrast passed 4.5:1 for normal text and 3:1 for large text, including expanded project details. Desktop/phone screenshots were inspected. This is a focused check, not a full assistive-technology audit.
+The eleven automated tests pass. Browser checks at 1440, 768, 375, and 320 pixels verified all seven cards, 21 visible skill chips, category filtering/reset, the retained software disclosure/archive route, keyboard skip-link access, and no horizontal overflow or failed resources. Computed text contrast passed 4.5:1 for normal text and 3:1 for large text, including expanded project details. Desktop/phone screenshots were inspected. This is a focused check, not a full assistive-technology audit.
 
 Existing warnings remain: Node and webpack-dev-server deprecations, the CRA/Babel undeclared-plugin dependency notice, and outdated Browserslist data. These are separate from compile errors. No dependency upgrade or audit remediation was performed; npm audit vulnerability counts have not been rechecked or resolved by this update.
 
 ## Navigation, typography, and project documentation
 
-The top navigation remains sticky while browsing the existing full-width sections. Anchor offsets leave section headings visible on desktop and phones. The introduction remains concise and in its original position; no sidebar was introduced.
+The hero is unchanged. Navigation labels use stronger type and padded hover/focus states; the current section has a green inset marker and `aria-current="location"`, updated on section links and scrolling. Navigation links open the matching Experience, Projects, or About card and scroll its face below the sticky header. Direct section URLs and browser hash navigation work too. Contact remains outside the cards.
 
 Headings and technical labels use a system monospace stack (`ui-monospace`, Cascadia Code, SFMono-Regular, Consolas, Liberation Mono, monospace). Body copy keeps the bundled Open Sans fonts. No font downloads or dependencies were added. A restrained receipt treatment appears only in expanded “Technical notes”, using dashed rules and readable text.
 
 Each of the seven main project cards now links to its repository README. Those READMEs were reviewed against the current source and updated on GitHub; the three software projects in the separate disclosure were left untouched. See the update record in [PROJECT_REVIEW.md](PROJECT_REVIEW.md) for exact commits and verification limits. Nothing was deployed.
 
-## Desktop About receipt
+## Taped section cards
 
-At widths of **1200px and above**, the existing About and education section becomes a left-hand receipt beside Experience and Selected Work. CSS sticky positioning is bounded by their shared work area, so the panel releases before Contact and cannot overlap the main column. Its height is limited to the available viewport; focus the receipt and use arrow/PageDown keys to read overflowing content.
+Experience, Projects, and About use one shared native HTML disclosure module in `src/components/SectionCard.js`. Each paper face has a section label, a decorative pixel icon below it, a CSS tape strip, and a visible open/close cue. The icons are inline SVG drawings; no image download, animation library, or dependency was added.
 
-Below 1200px the receipt styling, sticky positioning, height limit, and extra focus stop are removed. The single About section remains in the original reading order: Experience, Selected Work, About/education, Contact. Content is not duplicated or hidden behind a second mobile/desktop copy.
+When all cards are closed, desktop shows three cards side by side. Opening any card switches to a full-width stack so its content remains easy to read, without reordering the sections. At 760px and below the cards are always stacked. Enter, Space, pointer, and touch operate the disclosures independently. Content stays mounted, preserving filters and nested project notes when cards close. The archive route still opens Projects and Other software projects.
 
-Verified at 1440, 1200, 1199, 375, and 320 pixels, including sticky release at Contact, keyboard scrolling, narrow-screen flow, category filtering, no horizontal overflow, and text contrast. The production build and nine tests pass; existing toolchain warnings remain. No deployment was performed.
+Hover/focus shadows and brief icon/indicator transitions provide feedback. Browsers supporting intrinsic-size transitions animate opening and closing over 180ms; other browsers open immediately. Reduced-motion settings remove all animation. Navigation links, direct URLs, and hash changes open the correct card; the current-section marker ignores closed cards while scrolling.
 
-The desktop receipt uses a narrow paper shape with shallow torn edges, faint CSS fiber grain, print-style separators, and an inset keyboard focus ring. These visual effects are restricted to the expanded layout; its sticky boundary and internal scrolling are unchanged. The Experience-to-Selected Work transition uses one rule inside the content container: the last internship border and duplicate section border are removed, with controlled spacing on either side.
+Browser checks at 1440, 900, 375, and 320px verified card layout, icons below labels, independent expansion, keyboard and touch operation, same-hash navigation, direct links, category filter state, and the archive route. There was no horizontal overflow or runtime error. Computed text contrast passed the normal/large text thresholds. Desktop/mobile screenshots were inspected, including hover/focus and reduced motion. All eleven automated tests pass; this is not a full assistive-technology audit.
 
-The sticky navigation and hero have a subtle pixel/grid background built from one small repeating SVG and CSS transform animation. It is clipped to those two areas, sits behind their content, and ignores pointer input. Mobile uses lower opacity; `prefers-reduced-motion: reduce` disables movement. No JavaScript animation loop, external service, or dependency was added. Verified at 1440/375/320px for motion, reduced-motion mode, link hit targets, keyboard focus, no horizontal overflow, and no failed resources; build and nine tests pass.
+## Requested Codex plugin
+
+Verified the installed CLI (`0.164.0-alpha.11.1`) using `codex plugin --help`, `codex plugin marketplace add --help`, and `codex plugin add --help`, then ran the requested commands without changing their syntax:
+
+```powershell
+codex plugin marketplace add mattpocock/skills
+codex plugin add mattpocock-skills@mattpocock
+```
+
+Both commands succeeded. The installed plugin is version **1.3.1**, with its manifest present and `enabled = true` in the Codex configuration. Its Codebase Design skill informed the shared card module and small caller interface. The plugin is installed in the user's Codex configuration, not as a website dependency.
+
+The sticky navigation and hero have a subtle pixel/grid background built from one small repeating SVG and CSS transform animation. It is clipped to those two areas, sits behind their content, and ignores pointer input. Mobile uses lower opacity; `prefers-reduced-motion: reduce` disables movement. No JavaScript animation loop, external service, or dependency was added. Verified at 1440/375/320px for motion, reduced-motion mode, link hit targets, keyboard focus, no horizontal overflow, and no failed resources; build and eleven tests pass.

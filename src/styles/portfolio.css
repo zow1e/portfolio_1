@@ -12,9 +12,11 @@ h2 > span, .name-dot { color: var(--accent); }
 .navigation { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px; padding-block: 16px; }
 .wordmark { font-size: 36px; font-weight: 600; line-height: 1; text-decoration: none; letter-spacing: -4px; }
 .wordmark span { color: var(--accent); }
-.nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 30px; font-size: 15px; }
-.nav-links a { display: inline-flex; min-height: 44px; align-items: center; text-decoration: none; }
-.nav-links a:hover { text-decoration: underline; }
+.nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; }
+.nav-links a { position: relative; display: inline-flex; gap: 4px; min-height: 44px; align-items: center; padding: 8px 14px; border: 1px solid transparent; border-radius: 6px; color: var(--ink); text-decoration: none; }
+.nav-links a:hover { background: #e9eedf; border-color: var(--border); }
+.nav-links a:focus-visible { background: #e9eedf; outline-offset: 2px; }
+.nav-links a[aria-current='location'] { background: #e3ebd8; border-color: var(--control-border); box-shadow: inset 0 -3px 0 var(--green); }
 .hero { display: grid; grid-template-columns: 1.5fr 1fr; gap: 64px; align-items: center; padding-block: 76px; }
 h1 { font-size: clamp(38px, 3.8vw, 50px); margin-bottom: 28px; }
 .hero-accent { font-weight: 400; color: var(--green); }
@@ -76,11 +78,6 @@ h1 { font-size: clamp(38px, 3.8vw, 50px); margin-bottom: 28px; }
 .employer { margin-bottom: 0; padding-left: 12px; border-left: 3px solid #a2b491; color: var(--link); font-size: 16px; font-weight: 600; line-height: 1.7; }
 .experience-highlights { margin: 0; padding-left: 20px; color: var(--supporting); }
 .experience-highlights li + li { margin-top: 12px; }
-/* One content-aligned rule owns the work-section boundary. */
-.work-content .experience-section { padding-bottom: 0; }
-.work-content .experience-row:last-child { border-bottom: 0; }
-.work-content .projects-section { padding-top: 0; border-top: 0; }
-.work-content .projects-section > .container { border-top: 1px solid var(--border); padding-top: 48px; }
 .experience-content { min-width: 0; }
 .internship-skills { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 22px 0 0; }
 .internship-skills li { padding: 5px 11px; border: 1px solid #b7c5aa; border-radius: 6px; background: var(--chip-background); color: var(--chip-text); font-size: 15px; line-height: 1.6; }
@@ -163,7 +160,8 @@ summary { cursor: pointer; }
   .container { width: calc(100% - 36px); }
   .section { padding-block: 48px; }
   .navigation { padding-block: 18px; }
-  .nav-links { gap: 4px 14px; font-size: 14px; }
+  .nav-links { width: 100%; justify-content: space-between; gap: 4px; font-size: 14px; }
+  .nav-links a { padding: 8px 4px; }
   .hero { display: block; padding-block: 48px; }
   h1 { font-size: clamp(32px, 8vw, 42px); }
   h2 { font-size: 31px; margin-bottom: 28px; }
@@ -178,91 +176,109 @@ summary { cursor: pointer; }
   .project-card h3 { font-size: 25px; }
   .project-category { margin-bottom: 12px; }
   .project-summary { color: var(--ink); font-size: 17px; }
-  .work-content .projects-section > .container { padding-top: 36px; }
   .filters { gap: 9px; }
   .filters button { font-size: 14px; padding-inline: 15px; }
   .about-grid, .contact-grid { gap: 30px; }
   .footer > .container { font-size: 13px; }
 }
 
-/* A single About section becomes a bounded receipt beside the work on wide screens.
-   Its DOM position stays after Selected Work, preserving the narrow-screen order. */
-@media (min-width: 1200px) {
-  .work-about-layout {
-    display: grid;
-    grid-template-columns: 320px minmax(0, 1fr);
-    align-items: start;
-    gap: 48px;
-    width: min(1440px, calc(100% - 80px));
-    margin-inline: auto;
-    padding-block: 76px;
-  }
 
-  .work-content {
-    grid-column: 2;
-    grid-row: 1;
-    min-width: 0;
-  }
+/* Taped section cards: native disclosures keep content and keyboard behavior. */
+.section-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 44px 30px; padding-block: 72px 80px; }
+.section-cards:has(> .section-card[open]) { grid-template-columns: 1fr; }
+.section-card {
+  --card-paper: #f2f4ea;
+  --tape-color: #b5c59c;
+  --icon-fill: #d7e3c8;
+  position: relative;
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--card-paper);
+  box-shadow: 0 3px 0 #263e3808, 0 8px 18px #263e380b;
+  transition: box-shadow 160ms ease;
+}
+.card-portfolio { --card-paper: #edf2e6; --tape-color: #c9b58b; --icon-fill: #c9d9ba; }
+.card-about { --card-paper: #f5f1e7; --tape-color: #a8beb0; --icon-fill: #dfdac7; }
+.section-card::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: -13px;
+  left: calc(50% - 48px);
+  width: 96px;
+  height: 27px;
+  transform: rotate(-3deg);
+  border-inline: 1px dashed #fffefa70;
+  background: repeating-linear-gradient(96deg, transparent 0 3px, #fffefa20 3px 4px), var(--tape-color);
+  opacity: .85;
+  pointer-events: none;
+}
+.card-portfolio::before { transform: rotate(3deg); }
+.card-about::before { transform: rotate(-2deg); }
+.section-card-toggle { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; min-height: 292px; padding: 40px 24px 28px; border-radius: 3px; list-style: none; }
+.section-card-toggle::-webkit-details-marker { display: none; }
+.section-card-toggle::marker { content: ''; }
+.section-card-toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+.card-index { position: absolute; top: 25px; left: 22px; color: var(--supporting); font: 400 14px/1.5 var(--technical-font); }
+.section-card-title { color: var(--ink); font: 600 28px/1.3 var(--technical-font); letter-spacing: -.04em; }
+.section-card-icon { width: 84px; height: 84px; color: var(--green); transition: transform 160ms ease; }
+.section-card-action { display: inline-flex; align-items: center; gap: 12px; color: var(--link); font-size: 15px; font-weight: 600; }
+.card-indicator { display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid var(--control-border); border-radius: 50%; font: 400 24px/1 var(--technical-font); transition: transform 160ms ease; }
+.card-close-label { display: none; }
+.section-card[open] > .section-card-toggle .card-open-label { display: none; }
+.section-card[open] > .section-card-toggle .card-close-label { display: inline; }
+.section-card[open] > .section-card-toggle .card-indicator { transform: rotate(45deg); }
+.section-cards:has(> .section-card[open]) .section-card-toggle { min-height: 206px; gap: 12px; padding-block: 32px 24px; }
+.section-cards:has(> .section-card[open]) .section-card-icon { width: 60px; height: 60px; }
+.section-card[open] { grid-column: 1 / -1; }
+.section-card-content { padding: 0 32px 40px; }
+.section-card-content > .section { padding: 32px 0 8px; border: 0; border-top: 1px solid var(--border); background: transparent; }
+.section-card-content > .section > .container { width: 100%; }
+.section-card-content h2 { font-size: 30px; }
+.section-card-content .experience-row { gap: 32px; }
+.section-card-content .experience-row:last-child { border-bottom: 0; padding-bottom: 0; }
+.section-card-content .project-card { box-shadow: none; }
+.section-card-content .education { min-width: 0; }
+.section-card-content .about-grid { gap: 48px; }
+.section-card:focus-within { box-shadow: 0 4px 0 #263e3808, 0 12px 22px #263e3818; }
+.section-card-toggle:focus-visible .section-card-action { text-decoration: underline; text-underline-offset: 4px; }
+@media (hover: hover) and (pointer: fine) {
+  .section-card:hover { box-shadow: 0 4px 0 #263e3808, 0 12px 22px #263e3818; }
+  .section-card-toggle:hover .section-card-icon { transform: translateY(-3px); }
+  .section-card-toggle:hover .section-card-action { text-decoration: underline; text-underline-offset: 4px; }
+}
+/* Animate intrinsic height only where supported; other browsers open immediately. */
+@supports (interpolate-size: allow-keywords) and (transition-behavior: allow-discrete) {
+  .section-card { interpolate-size: allow-keywords; }
+  .section-card::details-content { block-size: 0; overflow: clip; transition: block-size 180ms ease, content-visibility 180ms allow-discrete; }
+  .section-card[open]::details-content { block-size: auto; }
+}
+@media (max-width: 900px) {
+  .section-cards { gap: 40px 20px; }
+  .section-card-title { font-size: 25px; }
+  .section-card-toggle { padding-inline: 16px; }
+}
+@media (max-width: 760px) {
+  .section-cards { grid-template-columns: 1fr; padding-block: 48px 56px; }
+  .section-card-toggle { min-height: 220px; gap: 12px; }
+  .section-card-icon { width: 64px; height: 64px; }
+}
+@media (max-width: 640px) {
+  .section-card-content { padding: 0 20px 28px; }
+  .section-card-content > .section { padding-top: 24px; }
+  .section-card-content h2 { font-size: 27px; }
+  .section-card-content .experience-row { gap: 20px; }
+  .section-card-content .about-grid { gap: 30px; }
+  .section-card-content .project-card { padding: 22px 18px; }
+  .section-card-content .project-card h3 { font-size: 23px; }
+  .section-card-content .project-details { flex-basis: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-card-toggle:hover .section-card-icon { transform: none; }
+}
 
-  .work-content .container { width: 100%; }
-  .work-content .experience-section { padding-top: 0; border-top: 0; }
-  .work-content .experience-row { gap: 28px; }
-  .work-content .projects-section { padding-bottom: 0; background: transparent; border-bottom: 0; }
-  .work-content .project-card { padding: 26px; }
-
-  .work-about-layout > .about-section {
-    grid-column: 1;
-    grid-row: 1;
-    position: sticky;
-    top: var(--nav-offset);
-    max-height: calc(100dvh - var(--nav-offset) - 24px);
-    overflow-y: auto;
-    scrollbar-gutter: stable;
-    scrollbar-width: thin;
-    scrollbar-color: var(--control-border) transparent;
-    padding: 28px 24px;
-    /* Faint fiber grain and a soft ink tint keep the paper calm and legible. */
-    background-color: var(--paper);
-    background-image:
-      radial-gradient(rgba(63, 81, 70, .035) .55px, transparent .8px),
-      linear-gradient(90deg, rgba(85, 114, 71, .025), transparent 18%, rgba(85, 114, 71, .015));
-    background-size: 4px 4px, 100% 100%;
-    border: 0;
-    /* Shallow, slightly uneven cuts suggest a torn thermal-paper roll. */
-    clip-path: polygon(
-      0 4px, 5% 0, 10% 5px, 15% 1px, 20% 4px, 25% 0,
-      30% 5px, 35% 1px, 40% 4px, 45% 0, 50% 5px, 55% 1px,
-      60% 4px, 65% 0, 70% 5px, 75% 1px, 80% 4px, 85% 0,
-      90% 5px, 95% 1px, 100% 4px,
-      100% calc(100% - 4px), 95% 100%, 90% calc(100% - 5px),
-      85% calc(100% - 1px), 80% calc(100% - 4px), 75% 100%,
-      70% calc(100% - 5px), 65% calc(100% - 1px), 60% calc(100% - 4px),
-      55% 100%, 50% calc(100% - 5px), 45% calc(100% - 1px),
-      40% calc(100% - 4px), 35% 100%, 30% calc(100% - 5px),
-      25% calc(100% - 1px), 20% calc(100% - 4px), 15% 100%,
-      10% calc(100% - 5px), 5% calc(100% - 1px), 0 calc(100% - 4px)
-    );
-  }
-
-  .work-about-layout > .about-section:focus-visible {
-    /* An inset focus ring remains visible inside the clipped paper edge. */
-    outline: none;
-    box-shadow: inset 0 0 0 3px var(--accent);
-  }
-
-  .work-about-layout .about-grid {
-    display: block;
-    width: 100%;
-  }
-
-  .work-about-layout .about-section .eyebrow { text-align: center; padding-bottom: 16px; border-bottom: 1px dashed var(--control-border); letter-spacing: .16em; }
-  .work-about-layout .about-section h2 { text-align: center; font-size: 25px; margin-bottom: 22px; }
-  .work-about-layout .education-dates { font-family: var(--technical-font); font-variant-numeric: tabular-nums; }
-  .work-about-layout .about-grid > div > p:not(.eyebrow) { font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
-  .work-about-layout .education { margin-top: 26px; padding-top: 24px; border-top: 1px dashed var(--control-border); }
-  .work-about-layout .education h3 { font-size: 19px; margin-bottom: 22px; }
-  .work-about-layout .education h4 { font-size: 17px; }
-  .work-about-layout .education-qualification strong { font-size: 16px; }
-  .work-about-layout .education p, .work-about-layout .education-details { font-size: 15px; }
-  .work-about-layout .education article + article { border-top-style: dashed; }
+@media (max-width: 360px) {
+  .nav-links { gap: 2px; }
+  .nav-links a { gap: 2px; padding-inline: 0; }
 }

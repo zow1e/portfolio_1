@@ -1,19 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { education } from '../data/profile';
 
 export default function About() {
-  const [expanded, setExpanded] = useState(false);
-
-  useEffect(() => {
-    if (typeof window.matchMedia !== 'function') return;
-    const viewport = window.matchMedia('(min-width: 1200px)');
-    const update = () => setExpanded(viewport.matches);
-    update();
-    viewport.addEventListener('change', update);
-    return () => viewport.removeEventListener('change', update);
-  }, []);
   return (
-    <section id="about" className="about-section section" aria-labelledby="about-title" tabIndex={expanded ? 0 : undefined}>
+    <section id="about" className="about-section section" aria-labelledby="about-title">
       <div className="container about-grid">
         <div>
           <p className="eyebrow">ABOUT</p>

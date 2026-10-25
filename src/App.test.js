@@ -38,7 +38,7 @@ it('places the three résumé-supported internships before projects', () => {
   expect(jobs[2].textContent).toContain('Defense Science Technology Agency (DSTA)');
 });
 
-it('shows all seven projects directly and keeps every section anchor usable', () => {
+it('keeps all seven projects in their card and every section anchor usable', () => {
   render();
   expect(primaryCards()).toHaveLength(7);
   expect(container.querySelector('.more-work')).toBeNull();
@@ -80,13 +80,14 @@ it('shows verified skill chips on every project card', () => {
     const card = container.querySelector(`#project-${project.id}`).closest('article');
     const chips = [...card.querySelectorAll('.project-tools li')].map(chip => chip.textContent);
     expect(chips).toEqual(project.tools);
-    expect(card.closest('details')).toBeNull();
+    expect(card.closest('.project-details')).toBeNull();
   }
 });
 
 it('preserves the legacy archive route and the software disclosure', () => {
   render('/zowie-portfolio/moreprojects');
   expect(primaryCards()).toHaveLength(7);
+  expect(container.querySelector('[data-section="portfolio"]').open).toBe(true);
   expect(container.querySelector('.other-work').open).toBe(true);
   expect(container.querySelectorAll('.archive-grid article')).toHaveLength(3);
 });
@@ -107,13 +108,46 @@ it('offers a way home for an unknown route', () => {
   expect(container.querySelector('a')).not.toBeNull();
 });
 
-it('bounds the single About receipt to Experience and Selected Work', () => {
+
+it('provides three independently expandable cards with one copy of each section', () => {
   render();
-  const workArea = container.querySelector('.work-about-layout');
-  expect(workArea.contains(container.querySelector('#resume'))).toBe(true);
-  expect(workArea.contains(container.querySelector('#portfolio'))).toBe(true);
-  expect(workArea.contains(container.querySelector('#about'))).toBe(true);
-  expect(workArea.contains(container.querySelector('#contact'))).toBe(false);
+  const cards = [...container.querySelectorAll('.section-card')];
+  expect(cards.map(card => card.querySelector('.section-card-title').textContent)).toEqual(['Experience', 'Projects', 'About']);
+  expect(cards.every(card => !card.open)).toBe(true);
+  act(() => { cards[0].open = true; cards[1].open = true; });
+  expect(cards[0].open).toBe(true);
+  expect(cards[1].open).toBe(true);
+  act(() => { cards[0].open = false; });
+  expect(cards[1].open).toBe(true);
   expect(container.querySelectorAll('#about')).toHaveLength(1);
-  expect(container.querySelector('#about').hasAttribute('tabindex')).toBe(false);
+  expect(container.querySelectorAll('#resume')).toHaveLength(1);
+  expect(container.querySelectorAll('#portfolio')).toHaveLength(1);
+  expect(container.querySelector('#contact').closest('.section-card')).toBeNull();
+});
+
+it('opens the matching card from navbar links without closing another card', () => {
+  render();
+  const experience = container.querySelector('[data-section="resume"]');
+  const about = container.querySelector('[data-section="about"]');
+  act(() => { experience.open = true; });
+  act(() => container.querySelector('.navigation a[href="#about"]').click());
+  expect(about.open).toBe(true);
+  expect(container.querySelector('.navigation a[href="#about"]').getAttribute('aria-current')).toBe('location');
+  expect(container.querySelectorAll('.navigation [aria-current]')).toHaveLength(1);
+  expect(experience.open).toBe(true);
+  act(() => { about.open = false; });
+  act(() => container.querySelector('.navigation a[href="#about"]').click());
+  expect(about.open).toBe(true);
+});
+
+it('opens a card on a direct hash link and responds to hash changes', () => {
+  render('/zowie-portfolio#portfolio');
+  expect(container.querySelector('[data-section="portfolio"]').open).toBe(true);
+  act(() => {
+    window.history.replaceState({}, '', '/zowie-portfolio#resume');
+    window.dispatchEvent(new HashChangeEvent('hashchange'));
+  });
+  expect(container.querySelector('[data-section="resume"]').open).toBe(true);
+  expect(container.querySelector('.navigation a[href="#resume"]').getAttribute('aria-current')).toBe('location');
+  expect(container.querySelector('[data-section="portfolio"]').open).toBe(true);
 });
