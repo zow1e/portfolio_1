@@ -43,7 +43,8 @@ export default function PortfolioPage({ archive = false }) {
   }, []);
 
   return (
-    <>
+    <div className="portfolio-page">
+      <div className="page-pixels" aria-hidden="true" />
       <a className="skip-link" href="#main">Skip to content</a>
       <div className="site-nav"><div className="container"><Navbar /></div></div>
       <Hero />
@@ -62,6 +63,6 @@ export default function PortfolioPage({ archive = false }) {
         <Contact />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

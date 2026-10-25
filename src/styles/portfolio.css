@@ -33,12 +33,24 @@ h1 { font-size: clamp(38px, 3.8vw, 50px); margin-bottom: 28px; }
 .desktop-note p { padding: 30px 28px 34px; margin: 0; font: 400 22px/1.7 var(--technical-font); }
 .desktop-note em { color: var(--green); font-style: normal; }
 
-/* Decorative pixels are contained behind the sticky navigation and hero only.
-   Two small repeating SVG layers animate in the compositor; no JS animation loop. */
+/* A viewport-sized field covers the whole page without a page-height animation
+   surface. Local layers strengthen the top and softly texture the dark contact. */
+.portfolio-page { position: relative; isolation: isolate; }
+.page-pixels {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(85, 114, 71, .009) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(85, 114, 71, .009) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
 .site-nav, #home { isolation: isolate; overflow: clip; }
-#home { position: relative; background-color: var(--background); }
+#home, .contact-section { position: relative; isolation: isolate; }
 .site-nav::before, #home::before,
-.site-nav::after, #home::after {
+.site-nav::after, #home::after, .page-pixels::after, .contact-section::after {
   content: "";
   position: absolute;
   pointer-events: none;
@@ -47,27 +59,34 @@ h1 { font-size: clamp(38px, 3.8vw, 50px); margin-bottom: 28px; }
 .site-nav::before, #home::before {
   inset: 0;
   background-image:
-    linear-gradient(rgba(85, 114, 71, .025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(85, 114, 71, .025) 1px, transparent 1px);
+    linear-gradient(rgba(85, 114, 71, .035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(85, 114, 71, .035) 1px, transparent 1px);
   background-size: 16px 16px;
 }
-.site-nav::after, #home::after {
+.site-nav::after, #home::after, .page-pixels::after, .contact-section::after {
   inset: -16px;
   background-image: url('../assets/pixel-field.svg');
   background-size: 384px 224px;
-  opacity: .55;
+  opacity: .28;
   animation: pixel-drift 48s steps(12, end) infinite alternate;
 }
-.site-nav::after { background-position: 96px 32px; animation-delay: -16s; }
+.site-nav::after { opacity: 1; background-position: 96px 32px; animation-delay: -16s; }
+#home::after { opacity: .95; }
+#home::before, #home::after { mask-image: linear-gradient(to bottom, #000 0%, #000 20%, transparent 100%); }
+.contact-section { overflow: clip; }
+.contact-section::after { opacity: .26; }
 @keyframes pixel-drift {
   from { transform: translate(-6px, -4px); }
   to { transform: translate(6px, 4px); }
 }
 @media (max-width: 640px) {
-  .site-nav::after, #home::after { opacity: .4; }
+  .page-pixels::after { opacity: .18; }
+  .site-nav::after { opacity: .85; }
+  #home::after { opacity: .75; }
+  .contact-section::after { opacity: .2; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .site-nav::after, #home::after { animation: none; transform: none; opacity: .35; }
+  .site-nav::after, #home::after, .page-pixels::after, .contact-section::after { animation: none; transform: none; }
 }
 /* Resume-supported experience */
 .experience-section { border-top: 1px solid var(--border); }
