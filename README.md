@@ -30,7 +30,7 @@ src/
   components/          Taped section cards, project cards, and category filters
   data/                Project descriptions, profile, education, and experience
   layout/              Navigation and footer
-  sections/            Hero, experience, projects, about, and contact
+  sections/            Hero, toolkit, experience, projects, about, and contact
   styles/              Global tokens/type and page layout
   App.js               Existing routes and missing-page fallback
   PortfolioPage.js     Section order and page composition
@@ -72,6 +72,10 @@ The hero is unchanged. Navigation labels use stronger type and padded hover/focu
 Headings and technical labels use a system monospace stack (`ui-monospace`, Cascadia Code, SFMono-Regular, Consolas, Liberation Mono, monospace). Body copy keeps the bundled Open Sans fonts. No font downloads or dependencies were added. A restrained receipt treatment appears only in expanded “Technical notes”, using dashed rules and readable text.
 
 Each of the seven main project cards now links to its repository README. Those READMEs were reviewed against the current source and updated on GitHub; the three software projects in the separate disclosure were left untouched. See the update record in [PROJECT_REVIEW.md](PROJECT_REVIEW.md) for exact commits and verification limits. Nothing was deployed.
+
+## Toolkit
+
+The compact Toolkit appears below the three taped cards and before Contact. Three groups (Languages, Libraries & frameworks, Tools & platforms) include every technology explicitly named in the supplied resume, alongside existing project and course entries. Resume entries do not require an external source. New source links distinguish course coverage from project use. The 43 labels are ordered for data science, ML, data engineering, and other technical areas; they are not proficiency ratings. The curated list and evidence URLs live in `src/data/toolkit.js`. See [TOOLKIT_REVIEW.md](TOOLKIT_REVIEW.md) for the resume inventory, all 25 course codes/titles, sources, and verification limits. No transcript grades or identifiers are published. Keep future entries tied to portfolio or repository evidence. Groups use flexible wrapping: three columns when space permits, two at intermediate widths, and one on narrow screens. Labels wrap within their available space. Cards and Toolkit share a wider desktop container; desktop card faces are enlarged while tablet/mobile retain comfortable sizing.
 
 ## Taped section cards
 

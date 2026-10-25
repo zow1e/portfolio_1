@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const sections = ['resume', 'portfolio', 'about', 'contact'];
+const sections = ['resume', 'portfolio', 'about', 'toolkit', 'contact'];
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState(() => window.location.hash.slice(1));
@@ -55,6 +55,7 @@ export default function Navbar() {
         <a {...sectionLink('resume')}>Experience</a>
         <a {...sectionLink('portfolio')}>Projects</a>
         <a {...sectionLink('about')}>About</a>
+        <a {...sectionLink('toolkit')}>Toolkit</a>
         <a {...sectionLink('contact')}>Contact <span aria-hidden="true">↗</span></a>
       </div>
     </nav>

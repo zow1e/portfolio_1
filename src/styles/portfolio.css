@@ -175,12 +175,12 @@ summary { cursor: pointer; }
 }
 
 @media (max-width: 640px) {
-  :root { --nav-offset: 160px; }
+  :root { --nav-offset: 200px; }
   .container { width: calc(100% - 36px); }
   .section { padding-block: 48px; }
   .navigation { padding-block: 18px; }
-  .nav-links { width: 100%; justify-content: space-between; gap: 4px; font-size: 14px; }
-  .nav-links a { padding: 8px 4px; }
+  .nav-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; gap: 4px; font-size: 14px; }
+  .nav-links a { justify-content: center; padding: 8px 4px; }
   .hero { display: block; padding-block: 48px; }
   h1 { font-size: clamp(32px, 8vw, 42px); }
   h2 { font-size: 31px; margin-bottom: 28px; }
@@ -202,8 +202,26 @@ summary { cursor: pointer; }
 }
 
 
+/* Cards and Toolkit share a wider desktop canvas, with fluid page gutters. */
+.section-cards.container, .toolkit.container { width: min(1280px, calc(100% - clamp(36px, 6vw, 96px))); }
+
+/* Groups wrap according to available space; labels keep their natural width. */
+.toolkit { padding-block: 24px 32px; margin-bottom: clamp(40px, 6vw, 76px); border-block: 1px solid var(--border); }
+.toolkit h2 { font-size: 22px; margin-bottom: 10px; }
+.toolkit-note { max-width: 95ch; margin-bottom: 22px; color: var(--supporting); font-size: 15px; line-height: 1.75; }
+.toolkit-groups { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 28px 32px; }
+.toolkit-group { flex: 1 1 20rem; min-width: 0; max-width: 100%; padding-top: 18px; border-top: 1px solid var(--border); }
+.toolkit-group h3 { color: var(--ink); font-size: 16px; line-height: 1.6; margin-bottom: 12px; }
+.toolkit-group ul { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.toolkit-context { margin: 20px 0 0; max-width: 100ch; color: var(--supporting); font-size: 15px; line-height: 1.75; }
+.toolkit-group li { display: flex; align-items: center; min-width: 0; max-width: 100%; min-height: 36px; padding: 3px 9px; border: 1px solid var(--border); border-radius: 4px; background: #f2f4ea; color: var(--ink); font-size: 15px; line-height: 1.65; white-space: normal; overflow-wrap: anywhere; }
+.toolkit-group li.toolkit-linked { padding: 0; }
+.toolkit-linked a { display: inline-flex; align-items: center; gap: 6px; min-width: 0; max-width: 100%; min-height: 44px; padding: 6px 9px; border-radius: 3px; color: var(--link); overflow-wrap: anywhere; }
+.toolkit-linked a > span { flex-shrink: 0; }
+.toolkit-linked a:hover, .toolkit-linked a:focus-visible { background: var(--chip-background); }
+
 /* Taped section cards: native disclosures keep content and keyboard behavior. */
-.section-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 44px 30px; padding-block: 72px 80px; }
+.section-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 44px clamp(24px, 3vw, 44px); padding-block: 48px 64px; }
 .section-cards:has(> .section-card[open]) { grid-template-columns: 1fr; }
 .section-card {
   --card-paper: #f2f4ea;
@@ -272,6 +290,11 @@ summary { cursor: pointer; }
   .section-card { interpolate-size: allow-keywords; }
   .section-card::details-content { block-size: 0; overflow: clip; transition: block-size 180ms ease, content-visibility 180ms allow-discrete; }
   .section-card[open]::details-content { block-size: auto; }
+}
+@media (min-width: 1100px) {
+  .section-card-toggle { min-height: 340px; gap: 24px; padding-block: 48px 36px; }
+  .section-card-title { font-size: 32px; }
+  .section-card-icon { width: 96px; height: 96px; }
 }
 @media (max-width: 900px) {
   .section-cards { gap: 40px 20px; }

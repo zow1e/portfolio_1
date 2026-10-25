@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Hero from './sections/Hero';
+import Toolkit from './sections/Toolkit';
 import Navbar from './layout/Navbar';
 import Experience from './sections/Experience';
 import Projects from './sections/Projects';
@@ -60,6 +61,7 @@ export default function PortfolioPage({ archive = false }) {
             <About />
           </SectionCard>
         </div>
+        <Toolkit />
         <Contact />
       </main>
       <Footer />

@@ -29,7 +29,7 @@ function primaryCards() {
 it('places the three résumé-supported internships before projects', () => {
   render();
   const sections = [...container.querySelector('main').querySelectorAll('section')];
-  expect(sections.map(section => section.id)).toEqual(['resume', 'portfolio', 'about', 'contact']);
+  expect(sections.map(section => section.id)).toEqual(['resume', 'portfolio', 'about', 'toolkit', 'contact']);
   const jobs = [...container.querySelectorAll('.experience-meta')];
   expect(jobs).toHaveLength(3);
   expect(jobs[0].textContent).toContain('Singapore Tourism Board (STB)');
@@ -138,6 +138,12 @@ it('opens the matching card from navbar links without closing another card', () 
   act(() => { about.open = false; });
   act(() => container.querySelector('.navigation a[href="#about"]').click());
   expect(about.open).toBe(true);
+  const toolkitLink = container.querySelector('.navigation a[href="#toolkit"]');
+  act(() => toolkitLink.click());
+  expect(toolkitLink.getAttribute('aria-current')).toBe('location');
+  expect(container.querySelector('#toolkit').previousElementSibling.classList.contains('section-cards')).toBe(true);
+  expect(about.open).toBe(true);
+  expect(experience.open).toBe(true);
 });
 
 it('opens a card on a direct hash link and responds to hash changes', () => {
