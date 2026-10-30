@@ -108,6 +108,20 @@ it('offers a way home for an unknown route', () => {
   expect(container.querySelector('a')).not.toBeNull();
 });
 
+it.each(['/', '/moreprojects/'])('serves the portfolio under the Pages base at %s', route => {
+  const previous = process.env.PUBLIC_URL;
+  process.env.PUBLIC_URL = 'https://zow1e.github.io/portfolio_1';
+  try {
+    render(`/portfolio_1${route}#toolkit`);
+    expect(container.querySelector('#toolkit')).not.toBeNull();
+    expect(container.querySelector('.navigation a[href="#toolkit"]')).not.toBeNull();
+    if (route.includes('moreprojects')) expect(container.querySelector('.other-work').open).toBe(true);
+  } finally {
+    if (previous === undefined) delete process.env.PUBLIC_URL;
+    else process.env.PUBLIC_URL = previous;
+  }
+});
+
 
 it('provides three independently expandable cards with one copy of each section', () => {
   render();

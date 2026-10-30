@@ -1,5 +1,5 @@
 {
-  "homepage": "https://zzschool.github.io/zowie-portfolio",
+  "homepage": "https://zow1e.github.io/portfolio_1/",
   "name": "resume",
   "version": "0.1.0",
   "private": true,
@@ -14,6 +14,8 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
+    "postbuild": "node scripts/prepare-pages.cjs",
+    "verify:pages": "node scripts/verify-pages.cjs",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

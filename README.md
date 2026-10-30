@@ -1,6 +1,6 @@
 # Zowie Ong — Portfolio
 
-A responsive portfolio for data science, machine learning, and AI engineering applications. The existing React 18, Create React App 5, and React Router setup is retained, along with the cream and green palette. No backend, API keys, remote fonts, or deployment is required.
+A responsive portfolio for data science, machine learning, and AI engineering applications. The existing React 18, Create React App 5, and React Router setup is retained, along with the cream and green palette. No backend, API keys, or remote fonts are required.
 
 ## Run locally
 
@@ -20,7 +20,23 @@ npm.cmd run build
 npm.cmd test -- --watchAll=false --runInBand
 ```
 
-The build goes to `build/`. `package.json` retains the original `/zowie-portfolio` homepage asset base and deployment scripts; **do not run `npm run deploy` for local development**. Nothing was deployed during this update. The retained CRA toolchain may print Node deprecation and outdated Browserslist warnings.
+The build goes to `build/`. The production asset/router base is `/portfolio_1/`; local development still works at `http://localhost:3000/`, including the original routes. The retained CRA toolchain may print Node deprecation, CRA/Babel and outdated Browserslist warnings.
+
+## GitHub Pages
+
+Configured public URL: **https://zow1e.github.io/portfolio_1/**. The Git remote is `zow1e/portfolio_1`, branch `main`. Publishing uses `.github/workflows/pages.yml`: install locked dependencies on Node 24, run tests, build without source maps, verify generated assets, upload only `build/`, then deploy with GitHub's Pages actions. No custom secret or backend is needed. Use the Actions workflow rather than the retained legacy `npm run deploy` script.
+
+In GitHub, open **Settings → Pages → Build and deployment → Source → GitHub Actions**. The repository is public, so it can publish using GitHub Pages on the current plan. Once Pages is enabled, pushes to `main` deploy automatically; use **Actions → Deploy portfolio to GitHub Pages → Run workflow** to retry manually. If GitHub reports a plan or permissions error, resolve that setting first and rerun the workflow.
+
+Section URLs such as `/portfolio_1/#toolkit` use the same static entry file on refresh. The postbuild script creates entry files for the existing archive and legacy routes, so direct visits to `/portfolio_1/moreprojects/` also work without server rewrites. Verify a production build with:
+
+```powershell
+$env:GENERATE_SOURCEMAP = 'false'
+npm.cmd run build
+npm.cmd run verify:pages
+```
+
+Private resumes, transcripts, local application output (`career-ops/`), local reference directories, editor settings, and environment files stay ignored. They are not part of the Pages artifact. The build verification rejects unexpected deployment file types and checks all generated asset paths against the Pages base.
 
 ## Structure
 

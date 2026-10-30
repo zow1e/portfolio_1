@@ -21,3 +21,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Local credentials and private reference/application material
+.env
+.env.*
+!.env.example
+/.vscode/
+/career-ops/
+/Zowie_resumeDS.pdf
+/y2_transcript.pdf
+/CS4243_Lab1_submission.zip
+/ee3801/
