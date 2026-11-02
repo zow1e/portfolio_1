@@ -1,5 +1,5 @@
 import React from 'react';
-import { education } from '../data/profile';
+import { awards, certifications, education } from '../data/profile';
 
 export default function About() {
   return (
@@ -29,6 +29,22 @@ export default function About() {
               </ul>
             </article>
           ))}
+        </div>
+        <div className="about-recognition" aria-labelledby="awards-title">
+          <h3 id="awards-title">Awards</h3>
+          <ul>
+            {awards.map(award => (
+              <li key={award.title}>
+                {award.title}{award.year && <> <span className="award-year">({award.year})</span></>}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="about-recognition" aria-labelledby="certifications-title">
+          <h3 id="certifications-title">Certifications</h3>
+          <ul>
+            {certifications.map(title => <li key={title}>{title}</li>)}
+          </ul>
         </div>
       </div>
     </section>

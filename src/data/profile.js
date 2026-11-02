@@ -64,3 +64,19 @@ export const education = [
     detail: 'Specialisation in Big Data',
   },
 ];
+
+// Titles transcribed from Zowie_resumeDS.pdf, except Max Lewis Scholarship,
+// supplied and confirmed by the user. NUS year also supplied by the user.
+export const awards = [
+  { title: 'NUS Soc Student Awards - Silver', year: '2025' },
+  { title: 'Max Lewis Scholarship 2024' },
+  { title: 'DSTA Polytechnic Digital Scholarship Recipient' },
+];
+
+export const certifications = [
+  'AWS Cloud Practitioner',
+  'Microsoft Power BI Data Analyst Associate',
+  'Machine Learning using SAS Viya',
+  'Microsoft Visual Analytics',
+  'Oracle Academy Database Design & Administration',
+];

@@ -152,6 +152,11 @@ summary { cursor: pointer; }
 .education-details { display: grid; gap: 12px; list-style: none; padding: 0; margin: 0; color: var(--ink); font-size: 16px; line-height: 1.75; }
 .education-label { display: block; color: var(--supporting); }
 .education-details strong { font-weight: 600; }
+.about-recognition { min-width: 0; border-top: 1px solid var(--border); padding-top: 24px; }
+.about-recognition h3 { font-size: 20px; margin-bottom: 18px; }
+.about-recognition ul { margin: 0; padding-left: 22px; display: grid; gap: 12px; color: var(--ink); overflow-wrap: anywhere; }
+.about-recognition li { padding-left: 4px; }
+.award-year { color: var(--supporting); white-space: nowrap; }
 .contact-section { background: var(--ink); color: #f4f6ed; }
 .contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 70px; align-items: center; }
 .contact-section h2 { margin-bottom: 22px; }
