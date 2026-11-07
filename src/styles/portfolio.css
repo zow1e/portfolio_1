@@ -180,10 +180,11 @@ summary { cursor: pointer; }
 }
 
 @media (max-width: 640px) {
-  :root { --nav-offset: 200px; }
+  :root { --nav-offset: 150px; }
   .container { width: calc(100% - 36px); }
   .section { padding-block: 48px; }
   .navigation { padding-block: 18px; }
+  .navigation .wordmark { display: none; }
   .nav-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; gap: 4px; font-size: 14px; }
   .nav-links a { justify-content: center; padding: 8px 4px; }
   .hero { display: block; padding-block: 48px; }
